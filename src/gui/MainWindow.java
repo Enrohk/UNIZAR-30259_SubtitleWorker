@@ -2,6 +2,7 @@ package gui;
 
 
 import exceptions.SomethingWrongHappenException;
+import gui.factory.FactoryDialog;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -13,7 +14,8 @@ public class MainWindow extends JFrame
 
     public MainWindow ()
     {
-        initFrame();
+        //initFrame();
+        System.out.println(FactoryDialog.loginGUIDialog());
     }
 
     private void initFrame ()
@@ -36,7 +38,7 @@ public class MainWindow extends JFrame
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
-                int closeOption = gui.factoryDialog.FactoryDialog.closeGUIDialog();
+                int closeOption = gui.factory.FactoryDialog.closeGUIDialog();
                 try {
                     controller.facade.MainFacade.closeProgram(closeOption);
                 } catch (SomethingWrongHappenException e) {
