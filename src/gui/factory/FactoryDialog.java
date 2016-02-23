@@ -1,6 +1,9 @@
 package gui.factory;
 
 
+import controller.security.PropertiesHandler;
+import controller.security.PropertiesKeys;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,8 +15,8 @@ public class FactoryDialog
 
     public static int closeGUIDialog ()
     {
-        String tittle = "Seguro cerrar",
-            question = "SEguro cerrar";
+        String tittle = PropertiesHandler.getLanguageValue(PropertiesKeys.CONFIRM_CLOSE_TITLE),
+            question = PropertiesHandler.getLanguageValue(PropertiesKeys.CONFIRM_CLOSE);
 
         return JOptionPane.showConfirmDialog(null,
                 question,
@@ -22,16 +25,24 @@ public class FactoryDialog
 
     }
 
+    /**
+     * @return 0 if logIn button clicked
+     *         1 if register button clicked
+     */
     public static int loginGUIDialog ()
     {
-        //0 login, 1 register, change icon (null)
-        String[] options = {"LogIN", "Register"};
+        String logInBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.LOGIN_BTN),
+                registerBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.REGISTER_BTN);
+        String[] options = {logInBtn, registerBtn};
+
+
         return JOptionPane.showOptionDialog(null,
                 FactoryPanels.getLogInDialogPanel(),
-                "Title",JOptionPane.DEFAULT_OPTION,
-                JOptionPane.PLAIN_MESSAGE,null,
+                PropertiesHandler.getLanguageValue(PropertiesKeys.LOGIN_TITLE),
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
+                new ImageIcon(PropertiesKeys.ICON_LOGIN_PATH),
                 options, options[0]);
-
     }
 
 }

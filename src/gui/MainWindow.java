@@ -1,32 +1,32 @@
 package gui;
 
-
+import controller.security.PropertiesHandler;
+import controller.security.PropertiesKeys;
 import exceptions.SomethingWrongHappenException;
 import gui.factory.FactoryDialog;
-
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-
 public class MainWindow extends JFrame
 {
-
     public MainWindow ()
     {
-        //initFrame();
+        initFrame();
         System.out.println(FactoryDialog.loginGUIDialog());
     }
 
     private void initFrame ()
     {
-        //Properties must be setted with config file
-        this.setSize(1000,600);
+        String xString = PropertiesHandler.getConfigValue(PropertiesKeys.WINDOW_DIMENSION_X),
+               yString = PropertiesHandler.getConfigValue(PropertiesKeys.WINDOW_DIMENSION_Y);
+
+        this.setSize(Integer.parseInt(xString),Integer.parseInt(yString));
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.setTitle("WORKER");
-        //this.setIconImage(new ImageIcon("path").getImage());  UNCOMENT WHEN ICON
+        this.setTitle(PropertiesHandler.getLanguageValue(PropertiesKeys.TITLE));
+        this.setIconImage(new ImageIcon(PropertiesKeys.ICON_PATH).getImage());
 
 
         //close operation

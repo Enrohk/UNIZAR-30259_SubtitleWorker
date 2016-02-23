@@ -1,15 +1,17 @@
 package main;
 
-
+import controller.security.PropertiesHandler;
+import controller.security.PropertiesKeys;
 import gui.MainWindow;
-
 import javax.swing.*;
 
 public class Main
 {
-
     public static void main (String[] args)
     {
+        PropertiesHandler.loadConfigProperties();
+        PropertiesHandler.loadLanguageProperties(PropertiesKeys.SPANISH_LANG);
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 new MainWindow();

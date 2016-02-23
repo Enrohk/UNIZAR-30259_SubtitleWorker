@@ -1,5 +1,5 @@
 package controller.apiRequester;
-
+/*
 
 import org.junit.Test;
 
@@ -14,3 +14,5 @@ public class ApiRequesterTest {
         controller.apiRequester.ApiRequester.request(null);
     }
 }
+
+ */
