@@ -4,9 +4,9 @@ package controller.security;
 public class PropertiesKeys {
 
     //Paths
-    public final static String ENGLISH_LANG = "config//lang_en.properties";
-    public final static String SPANISH_LANG = "config//lang_es.properties";
-    public final static String CONFIG_PROPERTIES_PATH = "config//config.properties";
+    public final static String ENGLISH_LANG = "resources//config//lang_en.properties";
+    public final static String SPANISH_LANG = "resources//config//lang_es.properties";
+    public final static String CONFIG_PROPERTIES_PATH = "resources//config//config.properties";
     public final static String ICON_PATH = "resources//images//frameIcon.png";
     public static final String ICON_LOGIN_PATH = "resources//images//frameIcon.png";
 

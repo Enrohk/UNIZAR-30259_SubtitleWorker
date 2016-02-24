@@ -1,5 +1,6 @@
 package gui;
 
+import controller.languageHandler.CanChangeLanguage;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import exceptions.SomethingWrongHappenException;
@@ -8,7 +9,7 @@ import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class MainWindow extends JFrame
+public class MainWindow extends JFrame implements CanChangeLanguage
 {
     public MainWindow ()
     {
@@ -48,7 +49,11 @@ public class MainWindow extends JFrame
                 }
             }
         });
+    }
 
+    public void changeLanguage ()
+    {
+        this.setTitle(PropertiesHandler.getLanguageValue(PropertiesKeys.TITLE));
     }
 
 }

@@ -1,6 +1,8 @@
 package controller.facade;
 
 
+import controller.languageHandler.ChangeLanguageObserver;
+import controller.security.PropertiesHandler;
 import exceptions.SomethingWrongHappenException;
 
 import javax.swing.*;
@@ -28,6 +30,12 @@ public class MainFacade
             default:
                 throw new SomethingWrongHappenException();
         }
+    }
+
+    public static void changeLanguage (String lang)
+    {
+        PropertiesHandler.loadLanguageProperties(lang);
+        ChangeLanguageObserver.changeLanguage();
     }
 
 
