@@ -1,6 +1,7 @@
 package controller.facade;
 
 
+import controller.languageHandler.CanChangeLanguage;
 import controller.languageHandler.ChangeLanguageObserver;
 import controller.security.PropertiesHandler;
 import exceptions.SomethingWrongHappenException;
@@ -36,6 +37,21 @@ public class MainFacade
     {
         PropertiesHandler.loadLanguageProperties(lang);
         ChangeLanguageObserver.changeLanguage();
+    }
+
+    public static void addLanguageListener (CanChangeLanguage listener)
+    {
+        ChangeLanguageObserver.addNewListener(listener);
+    }
+
+    public static void clearLanaguageListener ()
+    {
+        ChangeLanguageObserver.clearAll();
+    }
+
+    public static void removeLanguageListener (CanChangeLanguage listener)
+    {
+        ChangeLanguageObserver.removeListener (listener);
     }
 
 

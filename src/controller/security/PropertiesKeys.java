@@ -30,5 +30,6 @@ public class PropertiesKeys {
     public static final String LOGIN_BTN = "loginBtn";
 
 
-
+    //Testing
+    public static final String TEST_TEXT = "test";
 }

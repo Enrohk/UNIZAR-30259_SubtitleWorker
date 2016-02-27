@@ -1,6 +1,8 @@
 package controller.security;
 
 
+import controller.facade.MainFacade;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -35,12 +37,16 @@ public class PropertiesHandler {
         }
     }
 
+    /**
+     * Load the new language propertie and cchange all the listener language
+     * @param lang
+     */
     public static void loadLanguageProperties (String lang)
     {
         try (FileInputStream input = new FileInputStream(lang)) {
 
             langProperties.load(input);
-
+            MainFacade.changeLanguage(lang);
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -18,4 +18,25 @@ public class ChangeLanguageObserver {
             listener.changeLanguage();
     }
 
+    public static void removeListener(CanChangeLanguage listener) {
+
+        listeners.remove(listener);
+    }
+
+    public static void clearAll() {
+
+        listeners = new ArrayList<>();
+    }
+
+    public static void setListenerList (List<CanChangeLanguage> list)
+    {
+        listeners = list;
+    }
+
+    public static List<CanChangeLanguage> getListenerList ()
+    {
+        return listeners;
+    }
+
+
 }

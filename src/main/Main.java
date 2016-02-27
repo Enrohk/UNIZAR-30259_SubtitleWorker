@@ -10,7 +10,7 @@ public class Main
     public static void main (String[] args)
     {
         PropertiesHandler.loadConfigProperties();
-        PropertiesHandler.loadLanguageProperties(PropertiesKeys.SPANISH_LANG);
+        PropertiesHandler.loadLanguageProperties(PropertiesKeys.ENGLISH_LANG);
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
