@@ -1,10 +1,10 @@
 package gui;
 
+import controller.facade.MainFacade;
 import controller.languageHandler.CanChangeLanguage;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import exceptions.SomethingWrongHappenException;
-import gui.factory.FactoryDialog;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -14,8 +14,9 @@ public class MainWindow extends JFrame implements CanChangeLanguage
     public MainWindow ()
     {
         initFrame();
-        System.out.println(FactoryDialog.loginGUIDialog());
+        MainFacade.addLanguageListener(this);
     }
+
 
     private void initFrame ()
     {
@@ -28,7 +29,6 @@ public class MainWindow extends JFrame implements CanChangeLanguage
         this.setVisible(true);
         this.setTitle(PropertiesHandler.getLanguageValue(PropertiesKeys.TITLE));
         this.setIconImage(new ImageIcon(PropertiesKeys.ICON_PATH).getImage());
-
 
         //close operation
         addCloseOperation();

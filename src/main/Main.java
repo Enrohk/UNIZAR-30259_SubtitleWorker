@@ -1,5 +1,6 @@
 package main;
 
+import controller.facade.MainFacade;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import gui.MainWindow;
@@ -14,7 +15,13 @@ public class Main
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new MainWindow();
+
+                if (MainFacade.logIn())
+                {
+                    new MainWindow();
+                }
+
+
             }
         });
     }

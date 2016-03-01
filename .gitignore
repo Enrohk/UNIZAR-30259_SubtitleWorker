@@ -22,3 +22,5 @@ hs_err_pid*
 
 #Lib
 lib
+
+resources/config/OS.config

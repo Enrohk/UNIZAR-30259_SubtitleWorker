@@ -54,5 +54,10 @@ public class MainFacade
         ChangeLanguageObserver.removeListener (listener);
     }
 
+    public static boolean logIn()
+    {
+        return true;
+    }
+
 
 }

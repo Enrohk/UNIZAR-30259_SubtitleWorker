@@ -44,13 +44,13 @@ public class PropertiesHandler {
     public static void loadLanguageProperties (String lang)
     {
         try (FileInputStream input = new FileInputStream(lang)) {
-
             langProperties.load(input);
-            MainFacade.changeLanguage(lang);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
+
+
 
 
 
