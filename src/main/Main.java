@@ -16,10 +16,11 @@ public class Main
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
-                if (MainFacade.logIn())
+               /* if (MainFacade.logIn())
                 {
                     new MainWindow();
-                }
+                }*/
+                new MainWindow();
 
 
             }

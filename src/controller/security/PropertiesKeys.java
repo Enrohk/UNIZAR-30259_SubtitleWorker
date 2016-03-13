@@ -13,6 +13,7 @@ public class PropertiesKeys {
     //Config keys
     public static final String WINDOW_DIMENSION_X = "wdx";
     public static final String WINDOW_DIMENSION_Y = "wdy";
+    public static final String LOGGED_USERNAME = "loggedUsername";
 
     //Frame keys
     public static final String TITLE = "wtitle";
@@ -28,8 +29,15 @@ public class PropertiesKeys {
     //Buttons
     public static final String REGISTER_BTN = "registerBtn";
     public static final String LOGIN_BTN = "loginBtn";
+    public static final String LANG_SEARCH_BUTTON ="langSearchBtn";
+    public static final String FILM_SEARCH_BUTTON ="filmSearchBtn";
+    public static final String UPDATE_SUBTITLE_BUTTON = "updateSubtitleBtn";
+    public static final String LOG_OUT_BUTTON = "logOutBtn";
+    public static final String LOGGED_AS_LBL = "loggedAsLbl";
 
 
     //Testing
     public static final String TEST_TEXT = "test";
+
+
 }

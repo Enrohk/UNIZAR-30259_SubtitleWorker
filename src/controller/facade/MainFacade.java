@@ -5,6 +5,7 @@ import controller.languageHandler.CanChangeLanguage;
 import controller.languageHandler.ChangeLanguageObserver;
 import controller.security.PropertiesHandler;
 import exceptions.SomethingWrongHappenException;
+import gui.factory.FactoryDialog;
 
 import javax.swing.*;
 
@@ -56,7 +57,7 @@ public class MainFacade
 
     public static boolean logIn()
     {
-        return true;
+        return FactoryDialog.loginGUIDialog() == 1;
     }
 
 

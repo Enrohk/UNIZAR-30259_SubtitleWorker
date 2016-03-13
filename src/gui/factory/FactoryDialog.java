@@ -3,6 +3,7 @@ package gui.factory;
 
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
+import gui.components.LangButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +18,8 @@ public class FactoryDialog
     {
         String tittle = PropertiesHandler.getLanguageValue(PropertiesKeys.CONFIRM_CLOSE_TITLE),
             question = PropertiesHandler.getLanguageValue(PropertiesKeys.CONFIRM_CLOSE);
+
+
 
         return JOptionPane.showConfirmDialog(null,
                 question,
@@ -44,5 +47,7 @@ public class FactoryDialog
                 new ImageIcon(PropertiesKeys.ICON_LOGIN_PATH),
                 options, options[0]);
     }
+
+
 
 }
