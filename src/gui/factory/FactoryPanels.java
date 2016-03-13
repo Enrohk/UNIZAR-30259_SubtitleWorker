@@ -54,12 +54,47 @@ public class FactoryPanels {
     public static JPanel getMainTopPanel ()
     {
         JPanel genericTop = new JPanel();
-     //   genericTop.setLayout(new GridLayout(0,3));
         genericTop.setLayout(new BorderLayout());
         genericTop.add(getGenericTopLeft(),BorderLayout.WEST);
         genericTop.add(getGenericTopCenter(), BorderLayout.CENTER);
         genericTop.add(getGenericTopRight(), BorderLayout.EAST);
         return genericTop;
+    }
+
+    public static JPanel getMainCenterPanel() {
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BorderLayout());
+        centerPanel.add(getCenterTopPanel());
+        centerPanel.add(getCenterCenterPanel());
+
+        return centerPanel;
+    }
+
+    public static JPanel getMainBotPanel() {
+        JPanel botPanel = new JPanel();
+        botPanel.add(new LangButton(PropertiesKeys.JOIN_SUBTITLE_FILES_BTN));
+        return botPanel;
+    }
+
+    private static JPanel getCenterCenterPanel() {
+        JPanel centerCenter = new JPanel();
+        centerCenter.setLayout(new GridLayout(0,2));
+        centerCenter.add(getSubtitleSearcherPanel());
+        centerCenter.add(getSubtitleSearcherPanel());
+        return centerCenter;
+    }
+
+    private static JPanel getSubtitleSearcherPanel() {
+        JPanel subtitleSearcher = new JPanel();
+
+        return subtitleSearcher;
+    }
+
+    private static JPanel getCenterTopPanel() {
+        JPanel centerTop = new JPanel();
+        
+        
+        return centerTop;
     }
 
     private static JPanel getGenericTopRight() {
@@ -124,6 +159,7 @@ public class FactoryPanels {
         leftPanel.add(langBtn);
         return leftPanel;
     }
+
 
 
 }

@@ -40,6 +40,8 @@ public class MainWindow extends JFrame implements CanChangeLanguage
 
     private void addComponents() {
         this.add(FactoryPanels.getMainTopPanel(),BorderLayout.NORTH);
+        this.add(FactoryPanels.getMainCenterPanel(),BorderLayout.CENTER);
+        this.add(FactoryPanels.getMainBotPanel(), BorderLayout.SOUTH);
     }
 
     private void addCloseOperation ()
