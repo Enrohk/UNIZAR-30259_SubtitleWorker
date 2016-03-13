@@ -1,30 +1,28 @@
 package gui.factory;
 
-
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
-import gui.components.LangButton;
-
 import javax.swing.*;
-import java.awt.*;
 
 public class FactoryDialog
 {
-
-    //GET STRINGS FROM CONFIG
-    //SET ITEMS TO GET DATTA SOMEWHERE
 
     public static int closeGUIDialog ()
     {
         String tittle = PropertiesHandler.getLanguageValue(PropertiesKeys.CONFIRM_CLOSE_TITLE),
             question = PropertiesHandler.getLanguageValue(PropertiesKeys.CONFIRM_CLOSE);
 
+        String yesOption = PropertiesHandler.getLanguageValue(PropertiesKeys.YES_OPTION),
+                noOption = PropertiesHandler.getLanguageValue(PropertiesKeys.NO_OPTION);
+        String[] options = {yesOption, noOption};
 
-
-        return JOptionPane.showConfirmDialog(null,
+        return JOptionPane.showOptionDialog(null,
                 question,
                 tittle,
-                JOptionPane.YES_NO_OPTION);
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
+                new ImageIcon(PropertiesKeys.ICON_LOGIN_PATH),
+                options, options[0]);
 
     }
 

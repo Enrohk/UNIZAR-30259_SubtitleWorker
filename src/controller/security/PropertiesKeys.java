@@ -25,11 +25,16 @@ public class PropertiesKeys {
     public static final String LOG_IN_USERNAME = "loginUser";
     public static final String LOG_IN_PASSWORD = "loginPass";
     public static final String LOG_IN_KEEP = "loginKeep";
+    public static final String YES_OPTION = "yesOption";
+    public static final String NO_OPTION = "noOption";
 
     //Buttons
     public static final String REGISTER_BTN = "registerBtn";
     public static final String LOGIN_BTN = "loginBtn";
-    public static final String LANG_SEARCH_BUTTON ="langSearchBtn";
+    public static final String LANG_SEARCH_LEFT_BUTTON ="langSearchBtnLeft";
+    public static final String LANG_SEARCH_RIGHT_BUTTON ="langSearchBtnRight";
+    public static final String LANG_DOWNLOAD_LEFT_BUTTON ="langDownloadBtnLeft";
+    public static final String LANG_DOWNLOAD_RIGHT_BUTTON ="langDownloadBtnRight";
     public static final String FILM_SEARCH_BUTTON ="filmSearchBtn";
     public static final String UPDATE_SUBTITLE_BUTTON = "updateSubtitleBtn";
     public static final String LOG_OUT_BUTTON = "logOutBtn";

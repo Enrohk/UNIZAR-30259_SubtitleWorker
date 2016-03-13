@@ -3,6 +3,7 @@ package gui.factory;
 
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
+import gui.components.ItemListPanel;
 import gui.components.LangButton;
 import gui.components.LangLabel;
 
@@ -76,17 +77,30 @@ public class FactoryPanels {
         return botPanel;
     }
 
+    public static JPanel getTopSearchPanel ()
+    {
+        JPanel topSearchPanel = new JPanel();
+        String[] s = {"Spanish","Eglish"};
+        SpinnerModel list = new SpinnerListModel(s);
+        JSpinner langSpinner = new JSpinner(list);
+        topSearchPanel.add(langSpinner);
+        return topSearchPanel;
+    }
+
     private static JPanel getCenterCenterPanel() {
         JPanel centerCenter = new JPanel();
         centerCenter.setLayout(new GridLayout(0,2));
-        centerCenter.add(getSubtitleSearcherPanel());
-        centerCenter.add(getSubtitleSearcherPanel());
+        centerCenter.add(getSubtitleSearcherPanel(PropertiesKeys.LANG_SEARCH_LEFT_BUTTON,
+                                                    PropertiesKeys.LANG_DOWNLOAD_LEFT_BUTTON));
+        centerCenter.add(getSubtitleSearcherPanel(PropertiesKeys.LANG_SEARCH_RIGHT_BUTTON,
+                                                    PropertiesKeys.LANG_DOWNLOAD_RIGHT_BUTTON));
         return centerCenter;
     }
 
-    private static JPanel getSubtitleSearcherPanel() {
-        JPanel subtitleSearcher = new JPanel();
 
+    private static JPanel getSubtitleSearcherPanel(String searchButton, String downloadButton ) {
+        JPanel subtitleSearcher = new JPanel();
+            subtitleSearcher.add(new ItemListPanel(searchButton, downloadButton));
         return subtitleSearcher;
     }
 
