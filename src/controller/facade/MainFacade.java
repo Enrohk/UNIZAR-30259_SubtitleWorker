@@ -129,4 +129,49 @@ public class MainFacade
         }
 
     }
+
+    public static void uploadSubtitle() {
+
+        try {
+            int option = FactoryDialog.uploadSubtitleDialog();
+            if (option == JOptionPane.YES_OPTION) {
+                SubtitleDTO subtitleDTO = new SubtitleDTO();
+                byte[] content = FileContent.getFileContent(GuiFacade.getUploadPath()).getBytes();
+                subtitleDTO.setContent(content);
+                subtitleDTO.setTitle(GuiFacade.getUploadNameJTF().getText());
+                String query = QueryGenerator.GET_LANGUAGE_BY_NAME + "'" +
+                                GuiFacade.getUploadLangJTF().getText() + "'";
+                List list = DataBaseManager.getListByQuery(query);
+                int id = Functions.getObjectIDByType(Lirerals.LANGUAGE_TYPE, list.get(0));
+                subtitleDTO.setLanguageIdLanguage(id);
+
+                query = QueryGenerator.GET_WORK_BY_NAME + "'" +
+                        GuiFacade.getUploadWorkJTF().getText() + "'";
+
+                list = DataBaseManager.getListByQuery(query);
+
+                id = Functions.getObjectIDByType(Lirerals.WORK_TYPE,list.get(0));
+
+                subtitleDTO.setWorkIdWork(id);
+
+                DataBaseManager.saveOrDeleteSingleObject(subtitleDTO.getSubtitle(),true);
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
+
+
+    }
+
+    public static void getUploadPath(int fileChooserResult) {
+
+        if (fileChooserResult == JFileChooser.APPROVE_OPTION)
+        {
+            String finalPath = GuiFacade.getFileChooser().getSelectedFile().getPath();
+            GuiFacade.setUploadPath(finalPath);
+        }
+
+    }
 }

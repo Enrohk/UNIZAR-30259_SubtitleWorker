@@ -27,6 +27,12 @@ public class PropertiesKeys {
     public static final String LOG_IN_KEEP = "loginKeep";
     public static final String YES_OPTION = "yesOption";
     public static final String NO_OPTION = "noOption";
+    public static final String UPLOAD_TITTLE = "uploadTitle";
+    public static final String UPLOAD_NAME = "uploadName";
+    public static final String UPLOAD_CHOOSE_BTN = "uploadChooseBtn";
+    public static final String UPLOAD_WORK = "uploadWork";
+    public static final String UPLOAD_LANG_NAME = "uploadLangName";
+
 
     //Buttons
     public static final String REGISTER_BTN = "registerBtn";
@@ -40,6 +46,7 @@ public class PropertiesKeys {
     public static final String LOG_OUT_BUTTON = "logOutBtn";
     public static final String LOGGED_AS_LBL = "loggedAsLbl";
     public static final String JOIN_SUBTITLE_FILES_BTN = "joinSubtitleBtn";
+
 
 
     //Testing

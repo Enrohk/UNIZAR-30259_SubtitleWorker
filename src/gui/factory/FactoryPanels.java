@@ -210,5 +210,47 @@ public class FactoryPanels {
     }
 
 
+    public static JPanel getUploadSubtitlePanel() {
+
+        JPanel uploadSubtitle = new JPanel();
+
+        JPanel fileChooserPanel = new JPanel();
+        fileChooserPanel.add(new LangButton(PropertiesKeys.UPLOAD_CHOOSE_BTN));
+
+        JPanel namePanel = getPanelWithLayout();
+        namePanel.add(new LangLabel(PropertiesKeys.UPLOAD_NAME));
+        JTextField jtf = new JTextField(15);
+        GuiFacade.setUploadNameJTF(jtf);
+        namePanel.add(jtf);
+
+        JPanel workPanel = getPanelWithLayout();
+        workPanel.add(new LangLabel(PropertiesKeys.UPLOAD_WORK));
+        jtf = new JTextField(15);
+        GuiFacade.setUploadWorkJTF(jtf);
+        workPanel.add(jtf);
+
+        JPanel langPanel = getPanelWithLayout();
+        langPanel.add(new LangLabel(PropertiesKeys.UPLOAD_LANG_NAME));
+        jtf = new JTextField(15);
+        GuiFacade.setUploadLangJTF(jtf);
+        langPanel.add(jtf);
+
+        uploadSubtitle.setLayout(new BoxLayout(uploadSubtitle,BoxLayout.Y_AXIS));
+
+        uploadSubtitle.add(fileChooserPanel);
+        uploadSubtitle.add(namePanel);
+        uploadSubtitle.add(workPanel);
+        uploadSubtitle.add(langPanel);
+
+        return uploadSubtitle;
+
+    }
+
+    private static JPanel getPanelWithLayout ()
+    {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(2,0));
+        return panel;
+    }
 
 }

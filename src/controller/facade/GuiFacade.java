@@ -12,13 +12,52 @@ import javax.swing.*;
 public class GuiFacade {
 
     private static JTextField resourceJTF;
+    private static JTextField uploadNameJTF;
+
+    public static JTextField getUploadNameJTF() {
+        return uploadNameJTF;
+    }
+
+    public static JTextField getUploadWorkJTF() {
+        return uploadWorkJTF;
+    }
+
+    public static JTextField getUploadLangJTF() {
+        return uploadLangJTF;
+    }
+
+    private static JTextField uploadWorkJTF;
+    private static JTextField uploadLangJTF;
     private static JTextArea resourceJTA;
     private static JFrame mainWindow;
     private static JLabel resourceLabel;
     private static SubtitleListPanel rightSubtitlePanel, leftSubtitlePanel;
 
+    public static String getUploadPath() {
+        return uploadPath;
+    }
+
+    public static void setUploadPath(String uploadPath) {
+        GuiFacade.uploadPath = uploadPath;
+    }
+
+    private static String uploadPath;
+
+    public static void setUploadLangJTF(JTextField jtf) {
+        GuiFacade.uploadLangJTF = jtf;
+    }
+
+    public static void setUploadWorkJTF(JTextField jtf) {
+
+        GuiFacade.uploadWorkJTF = jtf;
+
+    }
     public static JFileChooser getFileChooser() {
         return GuiFacade.fileChooser;
+    }
+
+    public static void setUploadNameJTF(JTextField jtf) {
+        GuiFacade.uploadNameJTF = jtf;
     }
 
     private static JFileChooser fileChooser = new JFileChooser();
@@ -61,19 +100,30 @@ public class GuiFacade {
                 break;
             case PropertiesKeys.LANG_DOWNLOAD_RIGHT_BUTTON:
                 Subtitle sR = rightSubtitlePanel.getSelected();
-                MainFacade.downloadSubtitle(showFileChooser(),sR);
+                MainFacade.downloadSubtitle(showFileChooser(true),sR);
                 break;
 
             case PropertiesKeys.LANG_DOWNLOAD_LEFT_BUTTON:
                 Subtitle sL = leftSubtitlePanel.getSelected();
-                MainFacade.downloadSubtitle(showFileChooser(),sL);
+                MainFacade.downloadSubtitle(showFileChooser(true),sL);
+                break;
+
+            case PropertiesKeys.UPDATE_SUBTITLE_BUTTON :
+                MainFacade.uploadSubtitle();
+                break;
+
+            case PropertiesKeys.UPLOAD_CHOOSE_BTN :
+                MainFacade.getUploadPath(showFileChooser(false));
                 break;
         }
     }
 
-    private static  int showFileChooser ()
+    private static  int showFileChooser (boolean download)
     {
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        if (download)
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        else
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         return fileChooser.showOpenDialog(null);
 
     }
