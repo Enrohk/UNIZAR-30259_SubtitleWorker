@@ -1,11 +1,13 @@
 package gui.factory;
 
 
+import controller.facade.GuiFacade;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import gui.components.ItemListPanel;
 import gui.components.LangButton;
 import gui.components.LangLabel;
+import gui.components.SubtitleListPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -65,8 +67,8 @@ public class FactoryPanels {
     public static JPanel getMainCenterPanel() {
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
-        centerPanel.add(getCenterTopPanel());
-        centerPanel.add(getCenterCenterPanel());
+        centerPanel.add(getCenterTopPanel(),BorderLayout.NORTH);
+        centerPanel.add(getCenterCenterPanel(), BorderLayout.CENTER);
 
         return centerPanel;
     }
@@ -90,10 +92,32 @@ public class FactoryPanels {
     private static JPanel getCenterCenterPanel() {
         JPanel centerCenter = new JPanel();
         centerCenter.setLayout(new GridLayout(0,2));
-        centerCenter.add(getSubtitleSearcherPanel(PropertiesKeys.LANG_SEARCH_LEFT_BUTTON,
-                                                    PropertiesKeys.LANG_DOWNLOAD_LEFT_BUTTON));
-        centerCenter.add(getSubtitleSearcherPanel(PropertiesKeys.LANG_SEARCH_RIGHT_BUTTON,
-                                                    PropertiesKeys.LANG_DOWNLOAD_RIGHT_BUTTON));
+
+        JPanel centerRight = new JPanel();
+        centerRight.setLayout(new BorderLayout());
+        JPanel centerLeft = new JPanel();
+        centerLeft.setLayout(new BorderLayout());
+
+
+        centerLeft.add(getSubtitleSearcherPanel(PropertiesKeys.LANG_SEARCH_LEFT_BUTTON,
+                                                    PropertiesKeys.LANG_DOWNLOAD_LEFT_BUTTON),
+                                                    BorderLayout.NORTH);
+        centerRight.add(getSubtitleSearcherPanel(PropertiesKeys.LANG_SEARCH_RIGHT_BUTTON,
+                                                    PropertiesKeys.LANG_DOWNLOAD_RIGHT_BUTTON),
+                                                    BorderLayout.NORTH);
+
+        SubtitleListPanel rightSubtitle = new SubtitleListPanel();
+        SubtitleListPanel leftSubtitle = new SubtitleListPanel();
+
+        centerLeft.add(leftSubtitle,BorderLayout.CENTER);
+        centerRight.add(rightSubtitle,BorderLayout.CENTER);
+
+        GuiFacade.setLeftSubtitlePanel(leftSubtitle);
+        GuiFacade.setRightSubtitlePanel(rightSubtitle);
+
+        centerCenter.add(centerLeft);
+        centerCenter.add(centerRight);
+
         return centerCenter;
     }
 
@@ -106,8 +130,18 @@ public class FactoryPanels {
 
     private static JPanel getCenterTopPanel() {
         JPanel centerTop = new JPanel();
-        
-        
+        centerTop.setLayout(new BorderLayout());
+        JLabel titleLbl = new JLabel();
+        GuiFacade.setResourceLabel(titleLbl);
+        JPanel titlePanel = new JPanel();
+        titlePanel.add(titleLbl);
+        JPanel jtaPanel = new JPanel();
+        JTextArea area = new JTextArea(10,50);
+        area.setLineWrap(true);
+        jtaPanel.add(area);
+        GuiFacade.setResourceJTA(area);
+        centerTop.add(jtaPanel, BorderLayout.CENTER);
+        centerTop.add(titlePanel, BorderLayout.NORTH);
         return centerTop;
     }
 
@@ -163,6 +197,7 @@ public class FactoryPanels {
     private static JPanel getTextArea() {
         JPanel textAreaPanel = new JPanel();
         JTextField searchTxtField = new JTextField(25);
+        GuiFacade.setResourceText(searchTxtField);
         textAreaPanel.add(searchTxtField);
         return textAreaPanel;
     }

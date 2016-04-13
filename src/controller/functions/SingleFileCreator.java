@@ -12,7 +12,8 @@ public class SingleFileCreator {
         PrintWriter pw = null;
         try
         {
-            pw = new PrintWriter(fileDestPath, "UTF-8");
+            String finalPath = fileDestPath + "/" + subtitle.getTitle() + ".srt";
+            pw = new PrintWriter(finalPath, "UTF-8");
             String subtitleContent = new String(subtitle.getContent());
             pw.write(subtitleContent);
 

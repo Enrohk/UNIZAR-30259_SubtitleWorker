@@ -4,15 +4,19 @@ package controller.facade;
 import controller.ddbb.DataBaseManager;
 import controller.ddbb.QueryGenerator;
 import controller.ddbb.dto.SubtitleDTO;
+import controller.ddbb.dto.WorkDTO;
 import controller.functions.FileContent;
 import controller.functions.Functions;
 import controller.functions.Lirerals;
+import controller.functions.SingleFileCreator;
 import controller.languageHandler.CanChangeLanguage;
 import controller.languageHandler.ChangeLanguageObserver;
 import controller.security.PropertiesHandler;
 import exceptions.DBException;
 import exceptions.SomethingWrongHappenException;
 import gui.factory.FactoryDialog;
+import model.ddbb.entity.Subtitle;
+
 import java.util.*;
 
 import javax.swing.*;
@@ -97,4 +101,32 @@ public class MainFacade
         }
     }
 
+    public static WorkDTO getWorkDTO ()
+    {
+        WorkDTO workDTO =  null;
+
+        try {
+            String resource = GuiFacade.getResourceText();
+            if (resource != null && !resource.isEmpty()) {
+                workDTO = new WorkDTO(resource);
+                return workDTO;
+            }
+        }
+        catch (Exception e)
+        {
+            //Handle Exception
+        }
+
+        return workDTO;
+    }
+
+    public static void downloadSubtitle(int fileChooserResult, Subtitle subtitle) {
+
+        if (fileChooserResult == JFileChooser.APPROVE_OPTION)
+        {
+            String finalPath = GuiFacade.getFileChooser().getSelectedFile().getPath();
+            SingleFileCreator.downloadFileSubtitle(subtitle,finalPath);
+        }
+
+    }
 }

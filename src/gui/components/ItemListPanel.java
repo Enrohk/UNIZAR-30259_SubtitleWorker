@@ -9,10 +9,10 @@ import java.awt.*;
 public class ItemListPanel extends JPanel
 {
     private String buttonSearchPK, buttonDownloadPK;
-    public ItemListPanel (String buttonSearchPropertieKey, String buttonDownloadPropertieKey)
+    public ItemListPanel (String buttonSearchPropertyKey, String buttonDownloadPropertyKey)
     {
-        this.buttonSearchPK = buttonSearchPropertieKey;
-        this.buttonDownloadPK = buttonDownloadPropertieKey;
+        this.buttonSearchPK = buttonSearchPropertyKey;
+        this.buttonDownloadPK = buttonDownloadPropertyKey;
         this.setLayout(new BorderLayout());
         addComponents();
     }
