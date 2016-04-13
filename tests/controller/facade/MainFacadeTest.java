@@ -43,8 +43,4 @@ public class MainFacadeTest {
         ChangeLanguageObserver.setListenerList(oldCCLList);
     }
 
-
-
-
-
 }
