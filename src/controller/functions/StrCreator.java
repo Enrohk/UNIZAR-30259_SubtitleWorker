@@ -42,5 +42,31 @@ public class StrCreator {
 
     }
 
+    public static Map<String, List<String>> mergeStr (Map<String, List<String>> strTop, Map<String, List<String>> strBot)
+    {
+
+        Map<String, List<String>> mergedStr = new TreeMap<String, List<String>>();
+
+        for (String t : strTop.keySet()) {
+            if( strBot.containsKey(t))
+            {
+                mergedStr.put (t, Functions.getNewJoinedListWithTwoSpacesBetween(strTop.get(t),strBot.get(t)));
+                strBot.remove(t);
+            }
+            else{
+                mergedStr.put (t, strTop.get(t));
+            }
+
+        }
+        for (String t : strBot.keySet()) {
+            mergedStr.put (t, strBot.get(t));
+        }
+
+
+
+        return mergedStr;
+
+    }
+
 
 }
