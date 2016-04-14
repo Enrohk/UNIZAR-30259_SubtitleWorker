@@ -4,6 +4,7 @@ import model.ddbb.entity.Language;
 import model.ddbb.entity.Work;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -67,5 +68,12 @@ public class Functions {
         return null;
     }
 
-
+    public static List<String> getNewJoinedListWithTwoSpacesBetween (List<String> l1, List<String> l2)
+    {
+        List<String> result = new ArrayList<String>(l1);
+        result.add("");
+        result.add("");
+        result.addAll(l2);
+        return result;
+    }
 }
