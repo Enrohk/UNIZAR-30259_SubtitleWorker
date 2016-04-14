@@ -7,8 +7,8 @@ import controller.ddbb.dto.SubtitleDTO;
 import controller.ddbb.dto.WorkDTO;
 import controller.functions.FileContent;
 import controller.functions.Functions;
-import controller.functions.Lirerals;
-import controller.functions.SingleFileCreator;
+import controller.functions.Literals;
+import controller.functions.FileCreator;
 import controller.languageHandler.CanChangeLanguage;
 import controller.languageHandler.ChangeLanguageObserver;
 import controller.security.PropertiesHandler;
@@ -82,11 +82,11 @@ public class MainFacade
             subtitleDTO.setContent(FileContent.getFileContent(contentPath).getBytes());
             String query = QueryGenerator.GET_LANGUAGE_BY_NAME + "'" + language +"'";
             List list = DataBaseManager.getListByQuery(query);
-            int id = Functions.getObjectIDByType(Lirerals.LANGUAGE_TYPE, list.get(0));
+            int id = Functions.getObjectIDByType(Literals.LANGUAGE_TYPE, list.get(0));
             subtitleDTO.setLanguageIdLanguage(id);
             query = QueryGenerator.GET_WORK_BY_NAME + "'" + resourceName + "'";
             list = DataBaseManager.getListByQuery(query);
-            id = Functions.getObjectIDByType(Lirerals.WORK_TYPE , list.get(0));
+            id = Functions.getObjectIDByType(Literals.WORK_TYPE , list.get(0));
             subtitleDTO.setWorkIdWork(id);
 
             DataBaseManager.saveOrDeleteSingleObject(subtitleDTO.getSubtitle(),true);
@@ -125,7 +125,7 @@ public class MainFacade
         if (fileChooserResult == JFileChooser.APPROVE_OPTION)
         {
             String finalPath = GuiFacade.getFileChooser().getSelectedFile().getPath();
-            SingleFileCreator.downloadFileSubtitle(subtitle,finalPath);
+            FileCreator.downloadFileSubtitle(subtitle,finalPath);
         }
 
     }
@@ -142,7 +142,7 @@ public class MainFacade
                 String query = QueryGenerator.GET_LANGUAGE_BY_NAME + "'" +
                                 GuiFacade.getUploadLangJTF().getText() + "'";
                 List list = DataBaseManager.getListByQuery(query);
-                int id = Functions.getObjectIDByType(Lirerals.LANGUAGE_TYPE, list.get(0));
+                int id = Functions.getObjectIDByType(Literals.LANGUAGE_TYPE, list.get(0));
                 subtitleDTO.setLanguageIdLanguage(id);
 
                 query = QueryGenerator.GET_WORK_BY_NAME + "'" +
@@ -150,7 +150,7 @@ public class MainFacade
 
                 list = DataBaseManager.getListByQuery(query);
 
-                id = Functions.getObjectIDByType(Lirerals.WORK_TYPE,list.get(0));
+                id = Functions.getObjectIDByType(Literals.WORK_TYPE,list.get(0));
 
                 subtitleDTO.setWorkIdWork(id);
 
