@@ -45,7 +45,7 @@ public class PropertiesKeys {
     public static final String UPDATE_SUBTITLE_BUTTON = "updateSubtitleBtn";
     public static final String LOG_OUT_BUTTON = "logOutBtn";
     public static final String LOGGED_AS_LBL = "loggedAsLbl";
-    public static final String JOIN_SUBTITLE_FILES_BTN = "joinSubtitleBtn";
+    public static final String MERGE_SUBTITLE_FILES_BTN = "joinSubtitleBtn";
 
 
 

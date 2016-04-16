@@ -174,4 +174,13 @@ public class MainFacade
         }
 
     }
+
+    public static void downloadMergedSubtitle(int fileChooserResult) {
+
+        if (fileChooserResult == JFileChooser.APPROVE_OPTION)
+        {
+            String finalPath = GuiFacade.getFileChooser().getSelectedFile().getPath();
+        }
+
+    }
 }

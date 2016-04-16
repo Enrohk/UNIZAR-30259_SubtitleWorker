@@ -115,6 +115,10 @@ public class GuiFacade {
             case PropertiesKeys.UPLOAD_CHOOSE_BTN :
                 MainFacade.getUploadPath(showFileChooser(false));
                 break;
+
+            case PropertiesKeys.MERGE_SUBTITLE_FILES_BTN :
+                MainFacade.downloadMergedSubtitle(showFileChooser(false));
+                break;
         }
     }
 

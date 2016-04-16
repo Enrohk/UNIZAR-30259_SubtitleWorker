@@ -75,7 +75,7 @@ public class FactoryPanels {
 
     public static JPanel getMainBotPanel() {
         JPanel botPanel = new JPanel();
-        botPanel.add(new LangButton(PropertiesKeys.JOIN_SUBTITLE_FILES_BTN));
+        botPanel.add(new LangButton(PropertiesKeys.MERGE_SUBTITLE_FILES_BTN));
         return botPanel;
     }
 
