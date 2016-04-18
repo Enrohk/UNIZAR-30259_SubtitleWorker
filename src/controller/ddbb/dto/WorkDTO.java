@@ -1,6 +1,7 @@
 package controller.ddbb.dto;
 
 import java.util.*;
+
 import controller.ddbb.DataBaseManager;
 import controller.ddbb.QueryGenerator;
 import exceptions.DBException;
@@ -21,10 +22,8 @@ public class WorkDTO {
         return description;
     }
 
-    public WorkDTO (String name) throws DBException
-    {
-        try
-        {
+    public WorkDTO(String name) throws DBException {
+        try {
             String query = QueryGenerator.GET_WORK_BY_NAME + "'" + name + "'";
             List workList = DataBaseManager.getListByQuery(query);
             if (workList.size() == 1) {
@@ -36,9 +35,7 @@ public class WorkDTO {
                 this.subtitleList = (List<Subtitle>) DataBaseManager.getListByQuery(query);
             }
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new DBException("Cant build WOrkDTO for " + name);
         }
 

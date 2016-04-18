@@ -13,8 +13,7 @@ public class LangButton extends JButton implements CanChangeLanguage {
 
     private String propertyKey;
 
-    public LangButton (String propertyKey)
-    {
+    public LangButton(String propertyKey) {
         this.propertyKey = propertyKey;
         this.setText(PropertiesHandler.getLanguageValue(propertyKey));
         ChangeLanguageObserver.addNewListener(this);
@@ -27,8 +26,7 @@ public class LangButton extends JButton implements CanChangeLanguage {
     }
 
 
-    public void changeLanguage ()
-    {
+    public void changeLanguage() {
         this.setText(PropertiesHandler.getLanguageValue(propertyKey));
     }
 

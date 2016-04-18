@@ -4,14 +4,13 @@ import java.util.*;
 
 public class StrCreator {
 
-    public static Map<String, List<String>> parseStr (String  str, String type)
-    {
+    public static Map<String, List<String>> parseStr(String str, String type) {
         Map<String, List<String>> parsedStr = new TreeMap<String, List<String>>();
         List<String> subtitleEntry = new ArrayList<String>();
         String timeStamp = null;
         String line;
 
-        try (Scanner sc = Functions.getScanner(str,type)) {
+        try (Scanner sc = Functions.getScanner(str, type)) {
             while (sc.hasNextLine()) {
                 line = sc.nextLine();
                 if (line.isEmpty()) {
@@ -32,9 +31,7 @@ public class StrCreator {
             }
             parsedStr.put(timeStamp, subtitleEntry);
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
 
@@ -42,26 +39,22 @@ public class StrCreator {
 
     }
 
-    public static Map<String, List<String>> mergeStr (Map<String, List<String>> strTop, Map<String, List<String>> strBot)
-    {
+    public static Map<String, List<String>> mergeStr(Map<String, List<String>> strTop, Map<String, List<String>> strBot) {
 
         Map<String, List<String>> mergedStr = new TreeMap<String, List<String>>();
 
         for (String t : strTop.keySet()) {
-            if( strBot.containsKey(t))
-            {
-                mergedStr.put (t, Functions.getNewJoinedListWithTwoSpacesBetween(strTop.get(t),strBot.get(t)));
+            if (strBot.containsKey(t)) {
+                mergedStr.put(t, Functions.getNewJoinedListWithTwoSpacesBetween(strTop.get(t), strBot.get(t)));
                 strBot.remove(t);
-            }
-            else{
-                mergedStr.put (t, strTop.get(t));
+            } else {
+                mergedStr.put(t, strTop.get(t));
             }
 
         }
         for (String t : strBot.keySet()) {
-            mergedStr.put (t, strBot.get(t));
+            mergedStr.put(t, strBot.get(t));
         }
-
 
 
         return mergedStr;

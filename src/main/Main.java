@@ -5,14 +5,13 @@ import controller.facade.MainFacade;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import gui.MainWindow;
+
 import javax.swing.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Main
-{
-    public static void main (String[] args)
-    {
+public class Main {
+    public static void main(String[] args) {
         PropertiesHandler.loadConfigProperties();
         PropertiesHandler.loadLanguageProperties(PropertiesKeys.SPANISH_LANG);
         Logger log = Logger.getLogger("org.hibernate");

@@ -2,15 +2,14 @@ package gui.factory;
 
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
+
 import javax.swing.*;
 
-public class FactoryDialog
-{
+public class FactoryDialog {
 
-    public static int closeGUIDialog ()
-    {
+    public static int closeGUIDialog() {
         String tittle = PropertiesHandler.getLanguageValue(PropertiesKeys.CONFIRM_CLOSE_TITLE),
-            question = PropertiesHandler.getLanguageValue(PropertiesKeys.CONFIRM_CLOSE);
+                question = PropertiesHandler.getLanguageValue(PropertiesKeys.CONFIRM_CLOSE);
 
         String yesOption = PropertiesHandler.getLanguageValue(PropertiesKeys.YES_OPTION),
                 noOption = PropertiesHandler.getLanguageValue(PropertiesKeys.NO_OPTION);
@@ -26,8 +25,7 @@ public class FactoryDialog
 
     }
 
-    public static int uploadSubtitleDialog ()
-    {
+    public static int uploadSubtitleDialog() {
         String tittle = PropertiesHandler.getLanguageValue(PropertiesKeys.UPLOAD_TITTLE);
 
 
@@ -47,10 +45,9 @@ public class FactoryDialog
 
     /**
      * @return 0 if logIn button clicked
-     *         1 if register button clicked
+     * 1 if register button clicked
      */
-    public static int loginGUIDialog ()
-    {
+    public static int loginGUIDialog() {
         String logInBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.LOGIN_BTN),
                 registerBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.REGISTER_BTN);
         String[] options = {logInBtn, registerBtn};
@@ -64,7 +61,6 @@ public class FactoryDialog
                 new ImageIcon(PropertiesKeys.ICON_LOGIN_PATH),
                 options, options[0]);
     }
-
 
 
 }

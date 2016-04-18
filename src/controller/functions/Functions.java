@@ -10,57 +10,48 @@ import java.util.Scanner;
 
 public class Functions {
 
-    public static int getObjectIDByType (String type, Object o)
-    {
-        switch (type)
-        {
-            case Literals.LANGUAGE_TYPE :
+    public static int getObjectIDByType(String type, Object o) {
+        switch (type) {
+            case Literals.LANGUAGE_TYPE:
                 return ((Language) o).getIdLanguage();
-            case Literals.WORK_TYPE :
-                return ((Work) o ).getIdWork();
+            case Literals.WORK_TYPE:
+                return ((Work) o).getIdWork();
 
             default:
                 return -1;
         }
     }
 
-    public static boolean isTimeStampLine (String line)
-    {
-        return line.contains ("-->");
+    public static boolean isTimeStampLine(String line) {
+        return line.contains("-->");
     }
 
-    public static boolean isNumberLine (String line)
-    {
-        try{
+    public static boolean isNumberLine(String line) {
+        try {
             Integer.parseInt(line);
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public static void printSubtitleEntry (List<String> subtitleEntry, PrintWriter pw) throws IOException {
+    public static void printSubtitleEntry(List<String> subtitleEntry, PrintWriter pw) throws IOException {
 
-        for (String line : subtitleEntry)
-        {
+        for (String line : subtitleEntry) {
             pw.println(line);
         }
     }
 
-    public static Scanner getScanner (String str, String type) throws FileNotFoundException
-    {
+    public static Scanner getScanner(String str, String type) throws FileNotFoundException {
         Scanner sc;
 
-        switch (type)
-        {
-            case Literals.FROM_FILE :
-                sc = new Scanner (new File(str));
+        switch (type) {
+            case Literals.FROM_FILE:
+                sc = new Scanner(new File(str));
                 return sc;
 
-            case Literals.FROM_STRING :
-                sc = new Scanner (str);
+            case Literals.FROM_STRING:
+                sc = new Scanner(str);
                 return sc;
 
         }
@@ -68,8 +59,7 @@ public class Functions {
         return null;
     }
 
-    public static List<String> getNewJoinedListWithTwoSpacesBetween (List<String> l1, List<String> l2)
-    {
+    public static List<String> getNewJoinedListWithTwoSpacesBetween(List<String> l1, List<String> l2) {
         List<String> result = new ArrayList<String>(l1);
         result.add("");
         result.add("");

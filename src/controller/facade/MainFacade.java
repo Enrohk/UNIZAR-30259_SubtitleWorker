@@ -113,7 +113,7 @@ public class MainFacade {
     public static void uploadSubtitle() {
 
 
-        try{
+        try {
             int option = FactoryDialog.uploadSubtitleDialog();
             if (option == JOptionPane.YES_OPTION) {
                 SubtitleDTO subtitleDTO = new SubtitleDTO();

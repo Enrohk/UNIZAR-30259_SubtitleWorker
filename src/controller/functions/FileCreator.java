@@ -8,24 +8,19 @@ import java.io.PrintWriter;
 
 public class FileCreator {
 
-    public static void downloadFileSubtitle (Subtitle subtitle, String fileDestPath)
-    {
+    public static void downloadFileSubtitle(Subtitle subtitle, String fileDestPath) {
         String finalPath = fileDestPath + "/" + subtitle.getTitle() + ".srt";
-        try (PrintWriter pw = new PrintWriter(finalPath, "UTF-8");)
-        {
+        try (PrintWriter pw = new PrintWriter(finalPath, "UTF-8");) {
             String subtitleContent = new String(subtitle.getContent());
             pw.write(subtitleContent);
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
     }
 
-    public static void generateFileFromStrMap (Map<String, List<String>> strMap, String destPath)
-    {
-        try(PrintWriter writer = new PrintWriter(new FileWriter(destPath))) {
+    public static void generateFileFromStrMap(Map<String, List<String>> strMap, String destPath) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(destPath))) {
             int i = 1;
 
             for (String t : strMap.keySet()) {
@@ -35,9 +30,7 @@ public class FileCreator {
                 writer.println();
                 i++;
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
 

@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -58,29 +59,26 @@ public class FunctionsTest {
 
         assertTrue(l3.size() == (l1.size() + l2.size()) + 2);
 
-        for (int i = 0; i<l1.size(); i++)
-        {
-            assertTrue(l3.get(i).equals(String.valueOf(i+1)));
+        for (int i = 0; i < l1.size(); i++) {
+            assertTrue(l3.get(i).equals(String.valueOf(i + 1)));
         }
 
-        for (int i = l1.size() +2 ; i<l2.size(); i++)
-        {
-            assertTrue(l3.get(i).equals(String.valueOf(i+1)));
+        for (int i = l1.size() + 2; i < l2.size(); i++) {
+            assertTrue(l3.get(i).equals(String.valueOf(i + 1)));
         }
 
     }
 
     @Test
-    public  void testGetObjectIdByType ()
-    {
+    public void testGetObjectIdByType() {
         Language l = new Language();
         l.setIdLanguage(1);
         Work w = new Work();
         w.setIdWork(1);
 
-        assertTrue(1 == Functions.getObjectIDByType(Literals.LANGUAGE_TYPE,l));
-        assertTrue(1 == Functions.getObjectIDByType(Literals.WORK_TYPE,w));
-        assertTrue (-1 == Functions.getObjectIDByType(Literals.NO_TYPE,""));
+        assertTrue(1 == Functions.getObjectIDByType(Literals.LANGUAGE_TYPE, l));
+        assertTrue(1 == Functions.getObjectIDByType(Literals.WORK_TYPE, w));
+        assertTrue(-1 == Functions.getObjectIDByType(Literals.NO_TYPE, ""));
 
     }
 }

@@ -37,21 +37,19 @@ public class PropertiesKeys {
     //Buttons
     public static final String REGISTER_BTN = "registerBtn";
     public static final String LOGIN_BTN = "loginBtn";
-    public static final String LANG_SEARCH_LEFT_BUTTON ="langSearchBtnLeft";
-    public static final String LANG_SEARCH_RIGHT_BUTTON ="langSearchBtnRight";
-    public static final String LANG_DOWNLOAD_LEFT_BUTTON ="langDownloadBtnLeft";
-    public static final String LANG_DOWNLOAD_RIGHT_BUTTON ="langDownloadBtnRight";
-    public static final String FILM_SEARCH_BUTTON ="filmSearchBtn";
+    public static final String LANG_SEARCH_LEFT_BUTTON = "langSearchBtnLeft";
+    public static final String LANG_SEARCH_RIGHT_BUTTON = "langSearchBtnRight";
+    public static final String LANG_DOWNLOAD_LEFT_BUTTON = "langDownloadBtnLeft";
+    public static final String LANG_DOWNLOAD_RIGHT_BUTTON = "langDownloadBtnRight";
+    public static final String FILM_SEARCH_BUTTON = "filmSearchBtn";
     public static final String UPDATE_SUBTITLE_BUTTON = "updateSubtitleBtn";
     public static final String LOG_OUT_BUTTON = "logOutBtn";
     public static final String LOGGED_AS_LBL = "loggedAsLbl";
     public static final String MERGE_SUBTITLE_FILES_BTN = "joinSubtitleBtn";
 
 
-
     //Testing
     public static final String TEST_TEXT = "test";
-
 
 
 }

@@ -56,8 +56,7 @@ public class SubtitleDTO {
         this.languageIdLanguage = languageIdLanguage;
     }
 
-    public Subtitle getSubtitle()
-    {
+    public Subtitle getSubtitle() {
         Subtitle subtitle = new Subtitle();
         subtitle.setWorkIdWork(this.workIdWork);
         subtitle.setLanguageIdLanguage(this.languageIdLanguage);
@@ -67,11 +66,10 @@ public class SubtitleDTO {
 
     }
 
-    public void setContentFromStr (Map<String, List<String>> str){
+    public void setContentFromStr(Map<String, List<String>> str) {
 
         String strToString = "";
-        for (Map.Entry entry : str.entrySet())
-        {
+        for (Map.Entry entry : str.entrySet()) {
             strToString = entry.getKey() + "\n" + ((List<String>) entry.getValue()).get(0);
         }
         this.setContent(strToString.getBytes());

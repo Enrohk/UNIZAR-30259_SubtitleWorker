@@ -8,18 +8,15 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class ClickableImageLabel extends JLabel
-{
+public class ClickableImageLabel extends JLabel {
     private String propertieKey;
     private final int selected = 0, nonSelected = 1;
 
     private ImageIcon[] images;
 
-    public ClickableImageLabel (String propertieKey)
-    {
+    public ClickableImageLabel(String propertieKey) {
         this.propertieKey = propertieKey;
         getImages();
-
 
 
         this.addMouseListener(new MouseListener() {
@@ -50,17 +47,16 @@ public class ClickableImageLabel extends JLabel
         });
     }
 
-    private void setImage (int status)
-    {
+    private void setImage(int status) {
         this.setIcon(images[status]);
     }
 
     private void getImages() {
         images = new ImageIcon[2];
         images[selected] = new ImageIcon(PropertiesHandler.
-                            getConfigValue(propertieKey+selected));
+                getConfigValue(propertieKey + selected));
 
         images[nonSelected] = new ImageIcon(PropertiesHandler.
-                getConfigValue(propertieKey+nonSelected));
+                getConfigValue(propertieKey + nonSelected));
     }
 }

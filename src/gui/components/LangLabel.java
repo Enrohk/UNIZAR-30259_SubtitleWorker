@@ -10,15 +10,13 @@ public class LangLabel extends JLabel implements CanChangeLanguage {
 
     private String propertyKey;
 
-    public LangLabel (String propertyKey)
-    {
+    public LangLabel(String propertyKey) {
         this.propertyKey = propertyKey;
         this.setText(PropertiesHandler.getLanguageValue(propertyKey));
         ChangeLanguageObserver.addNewListener(this);
     }
 
-    public void changeLanguage ()
-    {
+    public void changeLanguage() {
         this.setText(PropertiesHandler.getLanguageValue(propertyKey));
     }
 

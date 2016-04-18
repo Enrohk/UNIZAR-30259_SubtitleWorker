@@ -17,8 +17,7 @@ import static org.junit.Assert.*;
 public class MainFacadeTest {
 
     @Test
-    public void testChangeLanguageToAllTypeOfComponents ()
-    {
+    public void testChangeLanguageToAllTypeOfComponents() {
         List<CanChangeLanguage> oldCCLList = ChangeLanguageObserver.getListenerList();
         PropertiesHandler.loadLanguageProperties(PropertiesKeys.ENGLISH_LANG);
         List<CanChangeLanguage> list = new ArrayList<>();

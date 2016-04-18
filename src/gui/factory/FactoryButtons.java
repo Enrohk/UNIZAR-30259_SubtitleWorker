@@ -9,8 +9,7 @@ public class FactoryButtons {
 
     //Get names from properties
 
-    public static JButton getActionButton (String action)
-    {
+    public static JButton getActionButton(String action) {
         JButton logIn = new JButton(action);
         logIn.addActionListener(new ActionListener() {
             @Override

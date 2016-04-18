@@ -13,8 +13,7 @@ public class SubtitleCheckBox extends Checkbox {
         return subtitle;
     }
 
-    public SubtitleCheckBox (Subtitle subtitle)
-    {
+    public SubtitleCheckBox(Subtitle subtitle) {
         super(subtitle.getTitle());
         this.subtitle = subtitle;
 

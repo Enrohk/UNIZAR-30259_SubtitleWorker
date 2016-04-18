@@ -12,21 +12,18 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class MainWindow extends JFrame implements CanChangeLanguage
-{
-    public MainWindow ()
-    {
+public class MainWindow extends JFrame implements CanChangeLanguage {
+    public MainWindow() {
         initFrame();
         MainFacade.addLanguageListener(this);
     }
 
 
-    private void initFrame ()
-    {
+    private void initFrame() {
         String xString = PropertiesHandler.getConfigValue(PropertiesKeys.WINDOW_DIMENSION_X),
-               yString = PropertiesHandler.getConfigValue(PropertiesKeys.WINDOW_DIMENSION_Y);
+                yString = PropertiesHandler.getConfigValue(PropertiesKeys.WINDOW_DIMENSION_Y);
 
-        this.setSize(Integer.parseInt(xString),Integer.parseInt(yString));
+        this.setSize(Integer.parseInt(xString), Integer.parseInt(yString));
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -39,13 +36,12 @@ public class MainWindow extends JFrame implements CanChangeLanguage
     }
 
     private void addComponents() {
-        this.add(FactoryPanels.getMainTopPanel(),BorderLayout.NORTH);
-        this.add(FactoryPanels.getMainCenterPanel(),BorderLayout.CENTER);
+        this.add(FactoryPanels.getMainTopPanel(), BorderLayout.NORTH);
+        this.add(FactoryPanels.getMainCenterPanel(), BorderLayout.CENTER);
         this.add(FactoryPanels.getMainBotPanel(), BorderLayout.SOUTH);
     }
 
-    private void addCloseOperation ()
-    {
+    private void addCloseOperation() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
@@ -61,8 +57,7 @@ public class MainWindow extends JFrame implements CanChangeLanguage
         });
     }
 
-    public void changeLanguage ()
-    {
+    public void changeLanguage() {
         this.setTitle(PropertiesHandler.getLanguageValue(PropertiesKeys.TITLE));
     }
 
