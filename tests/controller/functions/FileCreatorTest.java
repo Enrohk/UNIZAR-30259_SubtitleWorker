@@ -34,7 +34,12 @@ public class FileCreatorTest {
             String fileContent = FileContent.getFileContent(tempFileDest);
 
             String subtitleContent = new String(subtitle.getContent()).trim();
-            assertTrue(fileContent.trim().equals(subtitleContent));
+
+            System.out.println(".."+fileContent.trim());
+            //System.out.println(subtitleContent.trim());
+
+            assertTrue(fileContent.trim().equals(subtitleContent.trim()));
+
 
         }
         catch (Exception e)
