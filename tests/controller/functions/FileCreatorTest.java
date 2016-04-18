@@ -28,15 +28,15 @@ public class FileCreatorTest {
         try {
             Subtitle subtitle = (Subtitle) DataBaseManager.getListByQuery("from Subtitle").get(0);
             assertTrue(subtitle.getIdSubtitle() > -1);
-            String tempFileDest = "tmp/tmp.srt";
+            String tempFileDest = "tmp";
 
             FileCreator.downloadFileSubtitle(subtitle,tempFileDest);
-            String fileContent = FileContent.getFileContent(tempFileDest);
+            String fileContent = FileContent.getFileContent(tempFileDest + "/" + subtitle.getTitle() + ".srt");
 
             String subtitleContent = new String(subtitle.getContent()).trim();
 
             System.out.println(".."+fileContent.trim());
-            //System.out.println(subtitleContent.trim());
+            System.out.println(subtitleContent.trim());
 
             assertTrue(fileContent.trim().equals(subtitleContent.trim()));
 
