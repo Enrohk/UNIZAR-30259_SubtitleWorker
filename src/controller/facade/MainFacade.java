@@ -5,10 +5,7 @@ import controller.ddbb.DataBaseManager;
 import controller.ddbb.QueryGenerator;
 import controller.ddbb.dto.SubtitleDTO;
 import controller.ddbb.dto.WorkDTO;
-import controller.functions.FileContent;
-import controller.functions.Functions;
-import controller.functions.Literals;
-import controller.functions.FileCreator;
+import controller.functions.*;
 import controller.languageHandler.CanChangeLanguage;
 import controller.languageHandler.ChangeLanguageObserver;
 import controller.security.PropertiesHandler;
@@ -175,11 +172,23 @@ public class MainFacade
 
     }
 
-    public static void downloadMergedSubtitle(int fileChooserResult) {
+    public static void downloadMergedSubtitle(int fileChooserResult, Subtitle sL, Subtitle sR) {
 
         if (fileChooserResult == JFileChooser.APPROVE_OPTION)
         {
+            SubtitleDTO merged = new SubtitleDTO();
+            merged.setLanguageIdLanguage(sR.getLanguageIdLanguage());
+            merged.setWorkIdWork(sR.getWorkIdWork());
+            merged.setTitle(GuiFacade.getFileChooser().getSelectedFile().getName());
+            Map<String, List<String>> strParseR, strParseL;
+            strParseL = StrCreator.parseStr(new String(sR.getContent()),Literals.FROM_STRING);
+            strParseR = StrCreator.parseStr(new String(sL.getContent()), Literals.FROM_STRING);
+
+            merged.setContentFromStr(StrCreator.mergeStr(strParseL,strParseR));
             String finalPath = GuiFacade.getFileChooser().getSelectedFile().getPath();
+
+            FileCreator.downloadFileSubtitle(merged.getSubtitle(),finalPath);
+
         }
 
     }

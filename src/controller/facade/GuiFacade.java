@@ -117,7 +117,9 @@ public class GuiFacade {
                 break;
 
             case PropertiesKeys.MERGE_SUBTITLE_FILES_BTN :
-                MainFacade.downloadMergedSubtitle(showFileChooser(false));
+                Subtitle subLeft = leftSubtitlePanel.getSelected();
+                Subtitle subRight = rightSubtitlePanel.getSelected();
+                MainFacade.downloadMergedSubtitle(showFileChooser(true),subLeft,subRight);
                 break;
         }
     }
