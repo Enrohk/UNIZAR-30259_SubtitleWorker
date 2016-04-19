@@ -69,16 +69,5 @@ public class FunctionsTest {
 
     }
 
-    @Test
-    public void testGetObjectIdByType() {
-        Language l = new Language();
-        l.setIdLanguage(1);
-        Work w = new Work();
-        w.setIdWork(1);
 
-        assertTrue(1 == Functions.getObjectIDByType(Literals.LANGUAGE_TYPE, l));
-        assertTrue(1 == Functions.getObjectIDByType(Literals.WORK_TYPE, w));
-        assertTrue(-1 == Functions.getObjectIDByType(Literals.NO_TYPE, ""));
-
-    }
 }

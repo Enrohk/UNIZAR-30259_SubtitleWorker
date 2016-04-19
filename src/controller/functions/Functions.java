@@ -1,5 +1,6 @@
 package controller.functions;
 
+import exceptions.FunctionException;
 import model.ddbb.entity.Language;
 import model.ddbb.entity.Work;
 
@@ -10,16 +11,23 @@ import java.util.Scanner;
 
 public class Functions {
 
-    public static int getObjectIDByType(String type, Object o) {
-        switch (type) {
-            case Literals.LANGUAGE_TYPE:
-                return ((Language) o).getIdLanguage();
-            case Literals.WORK_TYPE:
-                return ((Work) o).getIdWork();
+    public static int getObjectIDByType(String type, Object o) throws FunctionException {
+        try {
+            switch (type) {
+                case Literals.LANGUAGE_TYPE:
+                    return ((Language) o).getIdLanguage();
+                case Literals.WORK_TYPE:
+                    return ((Work) o).getIdWork();
 
-            default:
-                return -1;
+                default:
+                    return -1;
+            }
         }
+        catch (Exception e)
+        {
+            throw new FunctionException();
+        }
+
     }
 
     public static boolean isTimeStampLine(String line) {
