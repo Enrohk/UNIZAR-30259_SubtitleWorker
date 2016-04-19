@@ -52,6 +52,10 @@ public class Functions {
         }
     }
 
+    /**
+     * @param line
+     * @return true if this line is a integer
+     */
     public static boolean isNumberLine(String line) {
         try {
             Integer.parseInt(line);
