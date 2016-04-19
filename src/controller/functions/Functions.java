@@ -11,6 +11,12 @@ import java.util.Scanner;
 
 public class Functions {
 
+    /**
+     * @param type object class type
+     * @param o
+     * @return id of the object
+     * @throws FunctionException
+     */
     public static int getObjectIDByType(String type, Object o) throws FunctionException {
         try {
             switch (type) {
@@ -30,8 +36,20 @@ public class Functions {
 
     }
 
-    public static boolean isTimeStampLine(String line) {
-        return line.contains("-->");
+    /**
+     * @param line
+     * @return true if the line is a srt time stamp line
+     */
+    public static boolean isTimeStampLine(String line)
+    {
+        try
+        {
+            return line.contains("-->");
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
     public static boolean isNumberLine(String line) {
