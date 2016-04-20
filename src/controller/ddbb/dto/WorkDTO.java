@@ -3,7 +3,7 @@ package controller.ddbb.dto;
 import java.util.*;
 
 import controller.ddbb.DataBaseManager;
-import controller.ddbb.QueryGenerator;
+import controller.ddbb.QueryStrings;
 import exceptions.DBException;
 import model.ddbb.entity.*;
 
@@ -24,14 +24,14 @@ public class WorkDTO {
 
     public WorkDTO(String name) throws DBException {
         try {
-            String query = QueryGenerator.GET_WORK_BY_NAME + "'" + name + "'";
+            String query = QueryStrings.GET_WORK_BY_NAME + "'" + name + "'";
             List workList = DataBaseManager.getListByQuery(query);
             if (workList.size() == 1) {
                 Work work = (Work) workList.get(0);
                 this.description = work.getDescription();
                 this.title = work.getTitle();
                 this.id = work.getIdWork();
-                query = QueryGenerator.GET_SUBTITLES_BY_WORK_ID + "'" + this.id + "'";
+                query = QueryStrings.GET_SUBTITLES_BY_WORK_ID + "'" + this.id + "'";
                 this.subtitleList = (List<Subtitle>) DataBaseManager.getListByQuery(query);
             }
 

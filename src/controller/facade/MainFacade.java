@@ -2,7 +2,7 @@ package controller.facade;
 
 
 import controller.ddbb.DataBaseManager;
-import controller.ddbb.QueryGenerator;
+import controller.ddbb.QueryStrings;
 import controller.ddbb.dto.SubtitleDTO;
 import controller.ddbb.dto.WorkDTO;
 import controller.functions.*;
@@ -67,11 +67,11 @@ public class MainFacade {
             SubtitleDTO subtitleDTO = new SubtitleDTO();
             subtitleDTO.setTitle(title);
             subtitleDTO.setContent(FileContent.getFileContent(contentPath).getBytes());
-            String query = QueryGenerator.GET_LANGUAGE_BY_NAME + "'" + language + "'";
+            String query = QueryStrings.GET_LANGUAGE_BY_NAME + "'" + language + "'";
             List list = DataBaseManager.getListByQuery(query);
             int id = Functions.getObjectIDByType(Literals.LANGUAGE_TYPE, list.get(0));
             subtitleDTO.setLanguageIdLanguage(id);
-            query = QueryGenerator.GET_WORK_BY_NAME + "'" + resourceName + "'";
+            query = QueryStrings.GET_WORK_BY_NAME + "'" + resourceName + "'";
             list = DataBaseManager.getListByQuery(query);
             id = Functions.getObjectIDByType(Literals.WORK_TYPE, list.get(0));
             subtitleDTO.setWorkIdWork(id);
@@ -120,13 +120,13 @@ public class MainFacade {
                 byte[] content = FileContent.getFileContent(GuiFacade.getUploadPath()).getBytes();
                 subtitleDTO.setContent(content);
                 subtitleDTO.setTitle(GuiFacade.getUploadNameJTF().getText());
-                String query = QueryGenerator.GET_LANGUAGE_BY_NAME + "'" +
+                String query = QueryStrings.GET_LANGUAGE_BY_NAME + "'" +
                         GuiFacade.getUploadLangJTF().getText() + "'";
                 List list = DataBaseManager.getListByQuery(query);
                 int id = Functions.getObjectIDByType(Literals.LANGUAGE_TYPE, list.get(0));
                 subtitleDTO.setLanguageIdLanguage(id);
 
-                query = QueryGenerator.GET_WORK_BY_NAME + "'" +
+                query = QueryStrings.GET_WORK_BY_NAME + "'" +
                         GuiFacade.getUploadWorkJTF().getText() + "'";
 
                 list = DataBaseManager.getListByQuery(query);

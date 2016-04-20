@@ -1,6 +1,7 @@
 package controller.ddbb;
 
 import controller.ddbb.dto.WorkDTO;
+import controller.functions.Functions;
 import model.ddbb.entity.Language;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,14 +16,13 @@ public class DataBaseManagerTest {
 
     @BeforeClass
     public static void disableLog() {
-        Logger log = Logger.getLogger("org.hibernate");
-        log.setLevel(Level.OFF);
+        Functions.disableHibernateLog();
     }
 
     @Test
     public void testGetWorkListByNameCountShouldBe1() {
         try {
-            String query = QueryGenerator.GET_WORK_BY_NAME + "'Pulp Fiction'";
+            String query = QueryStrings.GET_WORK_BY_NAME + "'Pulp Fiction'";
             List list = DataBaseManager.getListByQuery(query);
             assertTrue(list.size() == 1);
         } catch (Exception e) {
@@ -48,14 +48,14 @@ public class DataBaseManagerTest {
             Language language = new Language();
             language.setName("dummy");
             int oldSize, newSize;
-            String query = QueryGenerator.GET_LANGUAGE_LIST;
+            String query = QueryStrings.GET_LANGUAGE_LIST;
             List langList = DataBaseManager.getListByQuery(query);
             oldSize = langList.size();
             DataBaseManager.saveOrDeleteSingleObject(language, true);
             langList = DataBaseManager.getListByQuery(query);
             newSize = langList.size();
             assertTrue(newSize > oldSize);
-            String newQuery = QueryGenerator.GET_LANGUAGE_BY_NAME + "'dummy'";
+            String newQuery = QueryStrings.GET_LANGUAGE_BY_NAME + "'dummy'";
             language = (Language) DataBaseManager.getListByQuery(newQuery).get(0);
             DataBaseManager.saveOrDeleteSingleObject(language, false);
             langList = DataBaseManager.getListByQuery(query);

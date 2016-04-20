@@ -8,6 +8,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Functions {
 
@@ -95,5 +97,11 @@ public class Functions {
         result.add("");
         result.addAll(l2);
         return result;
+    }
+
+    public static void disableHibernateLog ()
+    {
+        Logger log = Logger.getLogger("org.hibernate");
+        log.setLevel(Level.OFF);
     }
 }
