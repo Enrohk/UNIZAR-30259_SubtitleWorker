@@ -31,7 +31,7 @@ public class AutoCompleteJTA {
 
     private static JTextField generateAutocompleteTextArea (List<String> items)
     {
-        JTextField jta = new JTextField(15);
+        JTextField jta = new JTextField();
         TextAutoCompleter complete=new TextAutoCompleter(jta);
         for (String item: items)
         {
