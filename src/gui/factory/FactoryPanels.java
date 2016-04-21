@@ -1,7 +1,11 @@
 package gui.factory;
 
 
+import controller.ddbb.DBMapNameId;
 import controller.facade.GuiFacade;
+import controller.facade.GuiItems;
+import controller.functions.Functions;
+import controller.functions.Literals;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import gui.components.ItemListPanel;
@@ -78,10 +82,10 @@ public class FactoryPanels {
 
     public static JPanel getTopSearchPanel() {
         JPanel topSearchPanel = new JPanel();
-        String[] s = {"Spanish", "Eglish"};
-        SpinnerModel list = new SpinnerListModel(s);
-        JSpinner langSpinner = new JSpinner(list);
-        topSearchPanel.add(langSpinner);
+        JComboBox<String> langDDL = new JComboBox<>(Functions.getLanguageArray());
+        langDDL.setSelectedIndex(0);
+        langDDL.setAlignmentX(Component.CENTER_ALIGNMENT);
+        topSearchPanel.add(langDDL);
         return topSearchPanel;
     }
 
@@ -108,8 +112,8 @@ public class FactoryPanels {
         centerLeft.add(leftSubtitle, BorderLayout.CENTER);
         centerRight.add(rightSubtitle, BorderLayout.CENTER);
 
-        GuiFacade.setLeftSubtitlePanel(leftSubtitle);
-        GuiFacade.setRightSubtitlePanel(rightSubtitle);
+        GuiItems.setLeftSubtitlePanel(leftSubtitle);
+        GuiItems.setRightSubtitlePanel(rightSubtitle);
 
         centerCenter.add(centerLeft);
         centerCenter.add(centerRight);
@@ -128,14 +132,14 @@ public class FactoryPanels {
         JPanel centerTop = new JPanel();
         centerTop.setLayout(new BorderLayout());
         JLabel titleLbl = new JLabel();
-        GuiFacade.setResourceLabel(titleLbl);
+        GuiItems.setResourceLabel(titleLbl);
         JPanel titlePanel = new JPanel();
         titlePanel.add(titleLbl);
         JPanel jtaPanel = new JPanel();
         JTextArea area = new JTextArea(10, 50);
         area.setLineWrap(true);
         jtaPanel.add(area);
-        GuiFacade.setResourceJTA(area);
+        GuiItems.setResourceJTA(area);
         centerTop.add(jtaPanel, BorderLayout.CENTER);
         centerTop.add(titlePanel, BorderLayout.NORTH);
         return centerTop;
@@ -193,7 +197,7 @@ public class FactoryPanels {
     private static JPanel getTextArea() {
         JPanel textAreaPanel = new JPanel();
         JTextField searchTxtField = new JTextField(25);
-        GuiFacade.setResourceText(searchTxtField);
+        GuiItems.setResourceText(searchTxtField);
         textAreaPanel.add(searchTxtField);
         return textAreaPanel;
     }
@@ -216,19 +220,19 @@ public class FactoryPanels {
         JPanel namePanel = getPanelWithLayout();
         namePanel.add(new LangLabel(PropertiesKeys.UPLOAD_NAME));
         JTextField jtf = new JTextField(15);
-        GuiFacade.setUploadNameJTF(jtf);
+        GuiItems.setUploadNameJTF(jtf);
         namePanel.add(jtf);
 
         JPanel workPanel = getPanelWithLayout();
         workPanel.add(new LangLabel(PropertiesKeys.UPLOAD_WORK));
         jtf = new JTextField(15);
-        GuiFacade.setUploadWorkJTF(jtf);
+        GuiItems.setUploadWorkJTF(jtf);
         workPanel.add(jtf);
 
         JPanel langPanel = getPanelWithLayout();
         langPanel.add(new LangLabel(PropertiesKeys.UPLOAD_LANG_NAME));
         jtf = new JTextField(15);
-        GuiFacade.setUploadLangJTF(jtf);
+        GuiItems.setUploadLangJTF(jtf);
         langPanel.add(jtf);
 
         uploadSubtitle.setLayout(new BoxLayout(uploadSubtitle, BoxLayout.Y_AXIS));

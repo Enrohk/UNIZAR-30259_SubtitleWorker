@@ -89,7 +89,7 @@ public class MainFacade {
         WorkDTO workDTO = null;
 
         try {
-            String resource = GuiFacade.getResourceText();
+            String resource = GuiItems.getResourceText();
             if (resource != null && !resource.isEmpty()) {
                 workDTO = new WorkDTO(resource);
                 return workDTO;
@@ -104,7 +104,7 @@ public class MainFacade {
     public static void downloadSubtitle(int fileChooserResult, Subtitle subtitle) {
 
         if (fileChooserResult == JFileChooser.APPROVE_OPTION) {
-            String finalPath = GuiFacade.getFileChooser().getSelectedFile().getPath();
+            String finalPath = GuiItems.getFileChooser().getSelectedFile().getPath();
             FileCreator.downloadFileSubtitle(subtitle, finalPath);
         }
 
@@ -117,17 +117,17 @@ public class MainFacade {
             int option = FactoryDialog.uploadSubtitleDialog();
             if (option == JOptionPane.YES_OPTION) {
                 SubtitleDTO subtitleDTO = new SubtitleDTO();
-                byte[] content = FileContent.getFileContent(GuiFacade.getUploadPath()).getBytes();
+                byte[] content = FileContent.getFileContent(GuiItems.getUploadPath()).getBytes();
                 subtitleDTO.setContent(content);
-                subtitleDTO.setTitle(GuiFacade.getUploadNameJTF().getText());
+                subtitleDTO.setTitle(GuiItems.getUploadNameJTF().getText());
                 String query = QueryStrings.GET_LANGUAGE_BY_NAME + "'" +
-                        GuiFacade.getUploadLangJTF().getText() + "'";
+                        GuiItems.getUploadLangJTF().getText() + "'";
                 List list = DataBaseManager.getListByQuery(query);
                 int id = Functions.getObjectIDByType(Literals.LANGUAGE_TYPE, list.get(0));
                 subtitleDTO.setLanguageIdLanguage(id);
 
                 query = QueryStrings.GET_WORK_BY_NAME + "'" +
-                        GuiFacade.getUploadWorkJTF().getText() + "'";
+                        GuiItems.getUploadWorkJTF().getText() + "'";
 
                 list = DataBaseManager.getListByQuery(query);
 
@@ -147,8 +147,8 @@ public class MainFacade {
     public static void getUploadPath(int fileChooserResult) {
 
         if (fileChooserResult == JFileChooser.APPROVE_OPTION) {
-            String finalPath = GuiFacade.getFileChooser().getSelectedFile().getPath();
-            GuiFacade.setUploadPath(finalPath);
+            String finalPath = GuiItems.getFileChooser().getSelectedFile().getPath();
+            GuiItems.setUploadPath(finalPath);
         }
 
     }
@@ -159,13 +159,13 @@ public class MainFacade {
             SubtitleDTO merged = new SubtitleDTO();
             merged.setLanguageIdLanguage(sR.getLanguageIdLanguage());
             merged.setWorkIdWork(sR.getWorkIdWork());
-            merged.setTitle(GuiFacade.getFileChooser().getSelectedFile().getName());
+            merged.setTitle(GuiItems.getFileChooser().getSelectedFile().getName());
             Map<String, List<String>> strParseR, strParseL;
             strParseL = StrCreator.parseStr(new String(sR.getContent()), Literals.FROM_STRING);
             strParseR = StrCreator.parseStr(new String(sL.getContent()), Literals.FROM_STRING);
 
             merged.setContentFromStr(StrCreator.mergeStr(strParseL, strParseR));
-            String finalPath = GuiFacade.getFileChooser().getSelectedFile().getPath();
+            String finalPath = GuiItems.getFileChooser().getSelectedFile().getPath();
 
             FileCreator.downloadFileSubtitle(merged.getSubtitle(), finalPath);
 

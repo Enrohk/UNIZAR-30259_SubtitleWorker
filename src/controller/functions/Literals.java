@@ -8,4 +8,5 @@ public class Literals {
     public static final String FROM_FILE = "from_file";
     public static final String FROM_STRING = "from_str";
     public static final String NO_TYPE = "no_type";
+    public static final String LIST_FIRST_ITEM = "---";
 }

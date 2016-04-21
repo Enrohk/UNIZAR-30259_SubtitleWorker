@@ -1,6 +1,8 @@
 package main;
 
+import controller.ddbb.DBMapNameId;
 import controller.facade.GuiFacade;
+import controller.facade.GuiItems;
 import controller.facade.MainFacade;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
@@ -12,23 +14,27 @@ import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) {
-        PropertiesHandler.loadConfigProperties();
-        PropertiesHandler.loadLanguageProperties(PropertiesKeys.SPANISH_LANG);
-        Logger log = Logger.getLogger("org.hibernate");
-        log.setLevel(Level.OFF);
+        try {
+            PropertiesHandler.loadConfigProperties();
+            PropertiesHandler.loadLanguageProperties(PropertiesKeys.SPANISH_LANG);
+            Logger log = Logger.getLogger("org.hibernate");
+            log.setLevel(Level.OFF);
+            DBMapNameId.initWorks();
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
 
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-
-               /* if (MainFacade.logIn())
+                /* if (MainFacade.logIn())
                 {
-                    new MainWindow();
+                        new MainWindow();
                 }*/
-                JFrame mainWindows = new MainWindow();
-                GuiFacade.setMainWindow(mainWindows);
-
-
-            }
-        });
+                    JFrame mainWindows = new MainWindow();
+                    GuiItems.setMainWindow(mainWindows);
+                }
+            });
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

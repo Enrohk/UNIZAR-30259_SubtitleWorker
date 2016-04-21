@@ -1,5 +1,6 @@
 package controller.functions;
 
+import controller.ddbb.DBMapNameId;
 import exceptions.FunctionException;
 import model.ddbb.entity.Language;
 import model.ddbb.entity.Work;
@@ -8,6 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -104,4 +106,17 @@ public class Functions {
         Logger log = Logger.getLogger("org.hibernate");
         log.setLevel(Level.OFF);
     }
+
+    public static String[] getLanguageArray ()
+    {
+        Set<String> langSet = DBMapNameId.getMap(Literals.LANGUAGE_TYPE).keySet();
+        String[] langArr = new String[langSet.size()+1];
+        langArr = langSet.toArray(langArr);
+        String first = langArr[0];
+        langArr[0] = Literals.LIST_FIRST_ITEM;
+        langArr[langSet.size()] = first;
+        return langArr;
+
+    }
+
 }
