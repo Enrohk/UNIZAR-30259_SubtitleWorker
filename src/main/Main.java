@@ -6,6 +6,7 @@ import controller.facade.GuiItems;
 import controller.facade.MainFacade;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
+import exceptions.DBException;
 import gui.MainWindow;
 
 import javax.swing.*;
@@ -27,7 +28,12 @@ public class Main {
                 {
                         new MainWindow();
                 }*/
-                    JFrame mainWindows = new MainWindow();
+                    JFrame mainWindows = null;
+                    try {
+                        mainWindows = new MainWindow();
+                    } catch (DBException e) {
+                        e.printStackTrace();
+                    }
                     GuiItems.setMainWindow(mainWindows);
                 }
             });

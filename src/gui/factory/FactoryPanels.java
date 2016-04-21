@@ -8,10 +8,8 @@ import controller.functions.Functions;
 import controller.functions.Literals;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
-import gui.components.ItemListPanel;
-import gui.components.LangButton;
-import gui.components.LangLabel;
-import gui.components.SubtitleListPanel;
+import exceptions.DBException;
+import gui.components.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,7 +54,7 @@ public class FactoryPanels {
         return null;
     }
 
-    public static JPanel getMainTopPanel() {
+    public static JPanel getMainTopPanel() throws DBException {
         JPanel genericTop = new JPanel();
         genericTop.setLayout(new BorderLayout());
         genericTop.add(getGenericTopLeft(), BorderLayout.WEST);
@@ -184,12 +182,12 @@ public class FactoryPanels {
     }
 
 
-    private static JPanel getGenericTopCenter() {
+    private static JPanel getGenericTopCenter() throws DBException {
         JPanel centerPanel = new JPanel();
         ;
         JPanel searchBtnPanel = new JPanel();
         searchBtnPanel.add(new LangButton(PropertiesKeys.FILM_SEARCH_BUTTON));
-        centerPanel.add(getTextArea());
+        centerPanel.add(AutoCompleteJTA.getAutocompleteTextArea(Literals.WORK_TYPE));
         centerPanel.add(searchBtnPanel);
         return centerPanel;
     }

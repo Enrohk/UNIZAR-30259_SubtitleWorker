@@ -13,9 +13,6 @@ import javax.swing.*;
 public class GuiFacade {
 
 
-
-
-
     public static void click(String propertyKey) {
 
         switch (propertyKey) {
@@ -61,7 +58,7 @@ public class GuiFacade {
         WorkDTO workDTO = MainFacade.getWorkDTO();
         if (workDTO != null) {
             GuiItems.getResourceJTA().setText(new String(workDTO.getDescription()));
-           GuiItems.getResourceLabel().setText(workDTO.getTitle());
+            GuiItems.getResourceLabel().setText(workDTO.getTitle());
             setSubtitles(workDTO.getSubtitleList());
             validateAndRepaint();
         }
@@ -79,7 +76,6 @@ public class GuiFacade {
         }
         validateAndRepaint();
     }
-
 
 
     private static void validateAndRepaint() {

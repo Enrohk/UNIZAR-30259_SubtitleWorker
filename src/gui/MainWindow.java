@@ -4,6 +4,7 @@ import controller.facade.MainFacade;
 import controller.languageHandler.CanChangeLanguage;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
+import exceptions.DBException;
 import exceptions.SomethingWrongHappenException;
 import gui.factory.FactoryPanels;
 
@@ -13,13 +14,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class MainWindow extends JFrame implements CanChangeLanguage {
-    public MainWindow() {
+    public MainWindow() throws DBException {
         initFrame();
         MainFacade.addLanguageListener(this);
     }
 
 
-    private void initFrame() {
+    private void initFrame() throws DBException {
         String xString = PropertiesHandler.getConfigValue(PropertiesKeys.WINDOW_DIMENSION_X),
                 yString = PropertiesHandler.getConfigValue(PropertiesKeys.WINDOW_DIMENSION_Y);
 
@@ -35,7 +36,7 @@ public class MainWindow extends JFrame implements CanChangeLanguage {
         addCloseOperation();
     }
 
-    private void addComponents() {
+    private void addComponents() throws DBException {
         this.add(FactoryPanels.getMainTopPanel(), BorderLayout.NORTH);
         this.add(FactoryPanels.getMainCenterPanel(), BorderLayout.CENTER);
         this.add(FactoryPanels.getMainBotPanel(), BorderLayout.SOUTH);

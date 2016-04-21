@@ -44,4 +44,27 @@ public class WorkDTO {
     public List<Subtitle> getSubtitleList() {
         return subtitleList;
     }
+
+    public static List<String> getWorkTitleList () throws DBException
+    {
+        try {
+            String query = QueryStrings.GET_WORK_LIST;
+            List workList = DataBaseManager.getListByQuery(query);
+            List<String> workTitleList = new ArrayList<String>();
+            String title;
+            for (Object o : workList)
+            {
+                title = ((Work)o).getTitle();
+                workTitleList.add(title);
+            }
+            return workTitleList;
+
+
+
+        } catch (Exception e) {
+
+             throw new DBException();
+        }
+
+    }
 }

@@ -2,6 +2,7 @@ package gui.factory;
 
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
+import exceptions.DBException;
 
 import javax.swing.*;
 
@@ -25,7 +26,7 @@ public class FactoryDialog {
 
     }
 
-    public static int uploadSubtitleDialog() {
+    public static int uploadSubtitleDialog() throws DBException {
         String tittle = PropertiesHandler.getLanguageValue(PropertiesKeys.UPLOAD_TITTLE);
 
 
