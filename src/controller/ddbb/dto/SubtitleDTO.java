@@ -72,6 +72,8 @@ public class SubtitleDTO {
         for (Map.Entry entry : str.entrySet()) {
             strToString = entry.getKey() + "\n" + ((List<String>) entry.getValue()).get(0);
         }
+
+
         this.setContent(strToString.getBytes());
 
     }

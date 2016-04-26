@@ -24,6 +24,7 @@ public class FactoryPanels {
         String user = PropertiesHandler.getLanguageValue(PropertiesKeys.LOG_IN_USERNAME);
         userFieldPanel.add(FactoryLabels.getLabel(user));
         JTextField userName = new JTextField();
+        GuiItems.setLogInNameJTF(userName);
         userName.setColumns(10);
         userFieldPanel.add(userName);
 
@@ -31,6 +32,7 @@ public class FactoryPanels {
         String pass = PropertiesHandler.getLanguageValue(PropertiesKeys.LOG_IN_PASSWORD);
         passFieldPanel.add(FactoryLabels.getLabel(pass));
         JPasswordField password = new JPasswordField();
+        GuiItems.setLogInPassJTF(password);
         password.setColumns(10);
         passFieldPanel.add(password);
 
@@ -41,6 +43,7 @@ public class FactoryPanels {
 
         String keep = PropertiesHandler.getLanguageValue(PropertiesKeys.LOG_IN_KEEP);
         JCheckBox keepLogged = new JCheckBox(keep);
+        GuiItems.setKeepLogged(keepLogged);
         JPanel southPanel = new JPanel();
         southPanel.add(keepLogged);
 
@@ -50,8 +53,60 @@ public class FactoryPanels {
         return centerPanel;
     }
 
-    public static JPanel getRegisterPanel() {
-        return null;
+    public static JPanel getRegisterDialogPanel()
+    {
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BorderLayout());
+
+        JPanel mailFieldPanel = new JPanel();
+        String mail = PropertiesHandler.getLanguageValue(PropertiesKeys.REG_MAIL);
+        mailFieldPanel.add(FactoryLabels.getLabel(mail));
+        JTextField userMail = new JTextField();
+        GuiItems.setRegisterEmailJTF(userMail);
+        userMail.setColumns(20);
+        mailFieldPanel.add(userMail);
+
+        JPanel userFieldPanel = new JPanel();
+        String user = PropertiesHandler.getLanguageValue(PropertiesKeys.LOG_IN_USERNAME);
+        userFieldPanel.add(FactoryLabels.getLabel(user));
+        JTextField userName = new JTextField();
+        GuiItems.setLogInNameJTF(userName);
+        userName.setColumns(10);
+        userFieldPanel.add(userName);
+
+        JPanel passFieldPanel = new JPanel();
+        String pass = PropertiesHandler.getLanguageValue(PropertiesKeys.LOG_IN_PASSWORD);
+        passFieldPanel.add(FactoryLabels.getLabel(pass));
+        JPasswordField password = new JPasswordField();
+        GuiItems.setLogInPassJTF(password);
+        password.setColumns(10);
+        passFieldPanel.add(password);
+
+        JPanel pass2FieldPanel = new JPanel();
+        String pass2 = PropertiesHandler.getLanguageValue(PropertiesKeys.REG_PASSWORD2);
+        passFieldPanel.add(FactoryLabels.getLabel(pass2));
+        JPasswordField password2 = new JPasswordField();
+        GuiItems.setRegisterPassJTF(password2);
+        password2.setColumns(10);
+        passFieldPanel.add(password2);
+
+        JPanel fieldsPanel = new JPanel();
+        fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.Y_AXIS));
+        fieldsPanel.add(mailFieldPanel);
+        fieldsPanel.add(userFieldPanel);
+        fieldsPanel.add(passFieldPanel);
+        fieldsPanel.add(pass2FieldPanel);
+
+        String keep = PropertiesHandler.getLanguageValue(PropertiesKeys.LOG_IN_KEEP);
+        JCheckBox keepLogged = new JCheckBox(keep);
+        GuiItems.setKeepLogged(keepLogged);
+        JPanel southPanel = new JPanel();
+        southPanel.add(keepLogged);
+
+        centerPanel.add(southPanel, BorderLayout.SOUTH);
+        centerPanel.add(fieldsPanel, BorderLayout.CENTER);
+
+        return centerPanel;
     }
 
     public static JPanel getMainTopPanel() throws DBException {

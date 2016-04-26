@@ -49,6 +49,7 @@ public class FactoryDialog {
      * 1 if register button clicked
      */
     public static int loginGUIDialog() {
+
         String logInBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.LOGIN_BTN),
                 registerBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.REGISTER_BTN);
         String[] options = {logInBtn, registerBtn};
@@ -63,5 +64,48 @@ public class FactoryDialog {
                 options, options[0]);
     }
 
+    /**
+     * @return 0 if register button clicked
+     * 1 if cancel button clicked
+     */
+    public static int registerGUIDialog() {
 
+        String registerBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.REGISTER_BTN),
+                cancelBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.CANCEL_BTN);
+        String[] options = {registerBtn, cancelBtn};
+
+
+        return JOptionPane.showOptionDialog(null,
+                FactoryPanels.getRegisterDialogPanel(),
+                PropertiesHandler.getLanguageValue(PropertiesKeys.REGISTER_TITLE),
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
+                new ImageIcon(PropertiesKeys.ICON_LOGIN_PATH),
+                options, options[0]);
+    }
+
+
+    public static void invalidLogin ()
+    {
+        String title = PropertiesHandler.getLanguageValue(PropertiesKeys.LOG_ERROR_TITLE);
+        String msg = PropertiesHandler.getLanguageValue(PropertiesKeys.LOG_ERROR_MSG);
+        JOptionPane.showMessageDialog(null, msg,title,JOptionPane.WARNING_MESSAGE);
+    }
+
+    public static void passErrorRegister ()
+    {
+        String title = PropertiesHandler.getLanguageValue(PropertiesKeys.REG_PASS_ERROR_TITLE);
+        String msg = PropertiesHandler.getLanguageValue(PropertiesKeys.REG_PASS_ERROR_MSG);
+        JOptionPane.showMessageDialog(null, msg,title,JOptionPane.WARNING_MESSAGE);
+    }
+
+    public static void mailErrorRegister ()
+    {
+        String title = PropertiesHandler.getLanguageValue(PropertiesKeys.REG_MAIL_ERROR_TITLE);
+        String msg = PropertiesHandler.getLanguageValue(PropertiesKeys.REG_MAIL_ERROR_MSG);
+        JOptionPane.showMessageDialog(null, msg,title,JOptionPane.WARNING_MESSAGE);
+    }
+
+    public static void nameErrorRegister() {
+    }
 }

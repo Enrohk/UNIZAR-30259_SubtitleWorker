@@ -1,14 +1,11 @@
 package controller.facade;
 
 
-import controller.ddbb.dto.WorkDTO;
+import controller.functions.GuiFunctions;
+import controller.functions.LogFunctions;
 import controller.security.PropertiesKeys;
-import gui.components.SubtitleCheckBox;
-import gui.components.SubtitleListPanel;
+import gui.factory.FactoryDialog;
 import model.ddbb.entity.Subtitle;
-
-import java.util.List;
-import javax.swing.*;
 
 public class GuiFacade {
 
@@ -17,16 +14,16 @@ public class GuiFacade {
 
         switch (propertyKey) {
             case PropertiesKeys.FILM_SEARCH_BUTTON:
-                fillCenterPanelInfo();
+                GuiFunctions.fillCenterPanelInfo();
                 break;
             case PropertiesKeys.LANG_DOWNLOAD_RIGHT_BUTTON:
                 Subtitle sR = GuiItems.getRightSubtitlePanel().getSelected();
-                MainFacade.downloadSubtitle(showFileChooser(true), sR);
+                MainFacade.downloadSubtitle(GuiFunctions.showFileChooser(true), sR);
                 break;
 
             case PropertiesKeys.LANG_DOWNLOAD_LEFT_BUTTON:
                 Subtitle sL = GuiItems.getLeftSubtitlePanel().getSelected();
-                MainFacade.downloadSubtitle(showFileChooser(true), sL);
+                MainFacade.downloadSubtitle(GuiFunctions.showFileChooser(true), sL);
                 break;
 
             case PropertiesKeys.UPDATE_SUBTITLE_BUTTON:
@@ -34,55 +31,27 @@ public class GuiFacade {
                 break;
 
             case PropertiesKeys.UPLOAD_CHOOSE_BTN:
-                MainFacade.getUploadPath(showFileChooser(false));
+                MainFacade.getUploadPath(GuiFunctions.showFileChooser(false));
                 break;
 
             case PropertiesKeys.MERGE_SUBTITLE_FILES_BTN:
                 Subtitle subLeft = GuiItems.getLeftSubtitlePanel().getSelected();
                 Subtitle subRight = GuiItems.getRightSubtitlePanel().getSelected();
-                MainFacade.downloadMergedSubtitle(showFileChooser(true), subLeft, subRight);
+                MainFacade.downloadMergedSubtitle(GuiFunctions.showFileChooser(true), subLeft, subRight);
                 break;
         }
     }
 
-    private static int showFileChooser(boolean download) {
-        if (download)
-            GuiItems.getFileChooser().setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    public static void start() {
+        int logInClickResult = FactoryDialog.loginGUIDialog();
+        if (logInClickResult == 0)
+            LogFunctions.logIn();
+        else if (logInClickResult == 1)
+            LogFunctions.registerPanel();
         else
-            GuiItems.getFileChooser().setFileSelectionMode(JFileChooser.FILES_ONLY);
-        return GuiItems.getFileChooser().showOpenDialog(null);
+            System.exit(0);
 
-    }
-
-    private static void fillCenterPanelInfo() {
-        WorkDTO workDTO = MainFacade.getWorkDTO();
-        if (workDTO != null) {
-            GuiItems.getResourceJTA().setText(new String(workDTO.getDescription()));
-            GuiItems.getResourceLabel().setText(workDTO.getTitle());
-            setSubtitles(workDTO.getSubtitleList());
-            validateAndRepaint();
-        }
-    }
-
-
-    private static void setSubtitles(List<Subtitle> subtitles) {
-
-        GuiItems.setRightSubtitlePanel(new SubtitleListPanel());
-        GuiItems.setLeftSubtitlePanel(new SubtitleListPanel());
-
-        for (Subtitle s : subtitles) {
-            GuiItems.getRightSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
-            GuiItems.getLeftSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
-        }
-        validateAndRepaint();
-    }
-
-
-    private static void validateAndRepaint() {
-        if (GuiItems.getMainWindow() != null) {
-            GuiItems.getMainWindow().validate();
-            GuiItems.getMainWindow().repaint();
-        }
+        GuiFunctions.showGUI();
     }
 
 

@@ -6,10 +6,15 @@ import javax.swing.*;
 
 public class GuiItems {
 
-    private static JTextField resourceJTF;
-    private static JTextField uploadNameJTF;
-    private static JTextField uploadWorkJTF;
-    private static JTextField uploadLangJTF;
+    private static JTextField   resourceJTF,
+                                uploadNameJTF,
+                                uploadWorkJTF,
+                                uploadLangJTF,
+                                logInNameJTF,
+                                logInPassJTF,
+                                registerEmailJTF,
+                                registerPassJTF;
+    private static JCheckBox keepLogged;
     private static JTextArea resourceJTA;
     private static JFrame mainWindow;
     private static JLabel resourceLabel;
@@ -17,6 +22,46 @@ public class GuiItems {
     private static String uploadPath;
     private static JFileChooser fileChooser = new JFileChooser();
 
+    public static JTextField getLogInNameJTF() {
+        return logInNameJTF;
+    }
+
+    public static void setLogInNameJTF(JTextField logInNameJTF) {
+        GuiItems.logInNameJTF = logInNameJTF;
+    }
+
+    public static JTextField getLogInPassJTF() {
+        return logInPassJTF;
+    }
+
+    public static void setLogInPassJTF(JTextField logInPassJTF) {
+        GuiItems.logInPassJTF = logInPassJTF;
+    }
+
+    public static JTextField getRegisterEmailJTF() {
+        return registerEmailJTF;
+    }
+
+    public static void setRegisterEmailJTF(JTextField registerEmailJTF) {
+        GuiItems.registerEmailJTF = registerEmailJTF;
+    }
+
+    public static JTextField getRegisterPassJTF() {
+        return registerPassJTF;
+    }
+
+    public static void setRegisterPassJTF(JTextField registerPassJTF) {
+        GuiItems.registerPassJTF = registerPassJTF;
+    }
+
+    public static boolean isKeepLogged() {
+        if (keepLogged!=null) return keepLogged.isSelected();
+        else return false;
+    }
+
+    public static void setKeepLogged(JCheckBox keepLogged) {
+        GuiItems.keepLogged = keepLogged;
+    }
 
     public static void setUploadPath(String uploadPath) {
         GuiItems.uploadPath = uploadPath;

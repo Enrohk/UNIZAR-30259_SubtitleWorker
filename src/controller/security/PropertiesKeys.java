@@ -32,6 +32,15 @@ public class PropertiesKeys {
     public static final String UPLOAD_CHOOSE_BTN = "uploadChooseBtn";
     public static final String UPLOAD_WORK = "uploadWork";
     public static final String UPLOAD_LANG_NAME = "uploadLangName";
+    public static final String LOG_ERROR_MSG = "logErrMsg";
+    public static final String LOG_ERROR_TITLE = "logErrTitle";
+    public static final String REG_PASS_ERROR_MSG = "regPassErrMsg";
+    public static final String REG_PASS_ERROR_TITLE = "regPassErrTitle";
+    public static final String REG_MAIL_ERROR_MSG = "regMailErrMsg";
+    public static final String REG_MAIL_ERROR_TITLE = "regMailErrTitle";
+    public static final String REGISTER_TITLE = "regTitle";
+    public static final String REG_PASSWORD2 = "regPass2";
+    public static final String REG_MAIL = "regMail";
 
 
     //Buttons
@@ -46,10 +55,12 @@ public class PropertiesKeys {
     public static final String LOG_OUT_BUTTON = "logOutBtn";
     public static final String LOGGED_AS_LBL = "loggedAsLbl";
     public static final String MERGE_SUBTITLE_FILES_BTN = "joinSubtitleBtn";
+    public static final String CANCEL_BTN = "cancelBtn";
 
 
     //Testing
     public static final String TEST_TEXT = "test";
+
 
 
 }

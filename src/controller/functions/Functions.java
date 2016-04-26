@@ -119,4 +119,8 @@ public class Functions {
 
     }
 
+    public static boolean isValidMail (String mail)
+    {
+        return mail.contains("@") && mail.indexOf(" ") < 0 ;
+    }
 }

@@ -17,12 +17,7 @@ public class LangButton extends JButton implements CanChangeLanguage {
         this.propertyKey = propertyKey;
         this.setText(PropertiesHandler.getLanguageValue(propertyKey));
         ChangeLanguageObserver.addNewListener(this);
-        this.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GuiFacade.click(propertyKey);
-            }
-        });
+        this.addActionListener( e -> GuiFacade.click(propertyKey) );
     }
 
 

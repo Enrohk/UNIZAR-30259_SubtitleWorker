@@ -4,6 +4,7 @@ package controller.facade;
 import controller.ddbb.DataBaseManager;
 import controller.ddbb.QueryStrings;
 import controller.ddbb.dto.SubtitleDTO;
+import controller.ddbb.dto.UserDTO;
 import controller.ddbb.dto.WorkDTO;
 import controller.functions.*;
 import controller.languageHandler.CanChangeLanguage;
@@ -57,33 +58,6 @@ public class MainFacade {
         ChangeLanguageObserver.removeListener(listener);
     }
 
-    public static boolean logIn() {
-        return FactoryDialog.loginGUIDialog() == 1;
-    }
-
-    public static void addSubtitle(String title, String contentPath,
-                                   String language, String resourceName) throws DBException {
-        try {
-            SubtitleDTO subtitleDTO = new SubtitleDTO();
-            subtitleDTO.setTitle(title);
-            subtitleDTO.setContent(FileContent.getFileContent(contentPath).getBytes());
-            String query = QueryStrings.GET_LANGUAGE_BY_NAME + "'" + language + "'";
-            List list = DataBaseManager.getListByQuery(query);
-            int id = Functions.getObjectIDByType(Literals.LANGUAGE_TYPE, list.get(0));
-            subtitleDTO.setLanguageIdLanguage(id);
-            query = QueryStrings.GET_WORK_BY_NAME + "'" + resourceName + "'";
-            list = DataBaseManager.getListByQuery(query);
-            id = Functions.getObjectIDByType(Literals.WORK_TYPE, list.get(0));
-            subtitleDTO.setWorkIdWork(id);
-
-            DataBaseManager.saveOrDeleteSingleObject(subtitleDTO.getSubtitle(), true);
-
-        } catch (Exception e) {
-
-        } finally {
-
-        }
-    }
 
     public static WorkDTO getWorkDTO() {
         WorkDTO workDTO = null;
@@ -170,6 +144,11 @@ public class MainFacade {
             FileCreator.downloadFileSubtitle(merged.getSubtitle(), finalPath);
 
         }
+
+    }
+
+
+    public static void logged(UserDTO userDto, boolean keepLogged) {
 
     }
 }

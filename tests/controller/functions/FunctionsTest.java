@@ -42,5 +42,26 @@ public class FunctionsTest {
 
     }
 
+    @Test
+    public void isValidMailTestNoSpaceTest ()
+    {
+        String mail = "valid@mail.com";
+        assertTrue(Functions.isValidMail(mail));
+    }
+
+    @Test
+    public void isValidMailTestFailTest ()
+    {
+        String mail = "invalidMail.com";
+        assertFalse(Functions.isValidMail(mail));
+    }
+
+    @Test
+    public void isValidMailTestSpaceTest ()
+    {
+        String mail = "invalid mail@mail.com";
+        assertFalse(Functions.isValidMail(mail));
+    }
+
 
 }

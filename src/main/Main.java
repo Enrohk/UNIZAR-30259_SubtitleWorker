@@ -21,13 +21,13 @@ public class Main {
             Logger log = Logger.getLogger("org.hibernate");
             log.setLevel(Level.OFF);
             DBMapNameId.initWorks();
-            SwingUtilities.invokeLater(new Runnable() {
+            /*SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
 
                 /* if (MainFacade.logIn())
                 {
                         new MainWindow();
-                }*/
+                }
                     JFrame mainWindows = null;
                     try {
                         mainWindows = new MainWindow();
@@ -36,7 +36,8 @@ public class Main {
                     }
                     GuiItems.setMainWindow(mainWindows);
                 }
-            });
+            }); */
+            SwingUtilities.invokeLater( () -> GuiFacade.start());
         }
         catch (Exception e)
         {
