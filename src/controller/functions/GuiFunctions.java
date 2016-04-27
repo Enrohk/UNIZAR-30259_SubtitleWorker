@@ -1,6 +1,7 @@
 package controller.functions;
 
 
+import controller.ddbb.dto.SubtitleDTO;
 import controller.ddbb.dto.WorkDTO;
 import controller.facade.GuiItems;
 import controller.facade.MainFacade;
@@ -15,6 +16,8 @@ import java.util.List;
 
 public class GuiFunctions {
 
+    private static int currentBotBtn = 1;
+
     public static void fillCenterPanelInfo() {
         WorkDTO workDTO = MainFacade.getWorkDTO();
         if (workDTO != null) {
@@ -22,6 +25,13 @@ public class GuiFunctions {
             GuiItems.getResourceLabel().setText(workDTO.getTitle());
             setSubtitles(workDTO.getSubtitleList());
             validateAndRepaint();
+        }
+    }
+
+    public static void validateAndRepaint() {
+        if (GuiItems.getMainWindow() != null) {
+            GuiItems.getMainWindow().validate();
+            GuiItems.getMainWindow().repaint();
         }
     }
 
@@ -48,12 +58,12 @@ public class GuiFunctions {
     }
 
 
-    private static void setSubtitles(List<Subtitle> subtitles) {
+    private static void setSubtitles(List<SubtitleDTO> subtitles) {
 
         GuiItems.setRightSubtitlePanel(new SubtitleListPanel());
         GuiItems.setLeftSubtitlePanel(new SubtitleListPanel());
 
-        for (Subtitle s : subtitles) {
+        for (SubtitleDTO s : subtitles) {
             GuiItems.getRightSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
             GuiItems.getLeftSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
         }
@@ -61,11 +71,10 @@ public class GuiFunctions {
     }
 
 
-    private static void validateAndRepaint() {
-        if (GuiItems.getMainWindow() != null) {
-            GuiItems.getMainWindow().validate();
-            GuiItems.getMainWindow().repaint();
-        }
+    public static void swapMergeBackBtn() {
+        currentBotBtn = (currentBotBtn +1) % 2;
+        GuiItems.getMainBotPanel().removeAll();
+        GuiItems.getMainBotPanel().add(GuiItems.getBotBtn(currentBotBtn));
+        validateAndRepaint();
     }
-
 }

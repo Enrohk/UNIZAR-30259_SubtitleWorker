@@ -4,6 +4,7 @@ import controller.ddbb.DBMapNameId;
 import controller.facade.GuiFacade;
 import controller.facade.GuiItems;
 import controller.facade.MainFacade;
+import controller.functions.GuiFunctions;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import exceptions.DBException;
@@ -37,7 +38,8 @@ public class Main {
                     GuiItems.setMainWindow(mainWindows);
                 }
             }); */
-            SwingUtilities.invokeLater( () -> GuiFacade.start());
+            //SwingUtilities.invokeLater( () -> GuiFacade.start());
+            SwingUtilities.invokeLater( () -> GuiFunctions.showGUI());
         }
         catch (Exception e)
         {

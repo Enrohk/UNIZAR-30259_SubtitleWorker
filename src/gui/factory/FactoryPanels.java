@@ -1,8 +1,6 @@
 package gui.factory;
 
 
-import controller.ddbb.DBMapNameId;
-import controller.facade.GuiFacade;
 import controller.facade.GuiItems;
 import controller.functions.Functions;
 import controller.functions.Literals;
@@ -53,8 +51,7 @@ public class FactoryPanels {
         return centerPanel;
     }
 
-    public static JPanel getRegisterDialogPanel()
-    {
+    public static JPanel getRegisterDialogPanel() {
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
 
@@ -118,18 +115,9 @@ public class FactoryPanels {
         return genericTop;
     }
 
-    public static JPanel getMainCenterPanel() {
-        JPanel centerPanel = new JPanel();
-        centerPanel.setLayout(new BorderLayout());
-        centerPanel.add(getCenterTopPanel(), BorderLayout.NORTH);
-        centerPanel.add(getCenterCenterPanel(), BorderLayout.CENTER);
-
-        return centerPanel;
-    }
-
     public static JPanel getMainBotPanel() {
         JPanel botPanel = new JPanel();
-        botPanel.add(new LangButton(PropertiesKeys.MERGE_SUBTITLE_FILES_BTN));
+        GuiItems.setMainBotPanel(botPanel);
         return botPanel;
     }
 
@@ -170,7 +158,7 @@ public class FactoryPanels {
 
         centerCenter.add(centerLeft);
         centerCenter.add(centerRight);
-
+        //return new JPanel();
         return centerCenter;
     }
 
@@ -243,8 +231,8 @@ public class FactoryPanels {
         searchBtnPanel.add(new LangButton(PropertiesKeys.FILM_SEARCH_BUTTON));
         JTextField jtf = AutoCompleteJTA.getAutocompleteTextArea(Literals.WORK_TYPE);
         GuiItems.setResourceText(jtf);
-        jtf.setColumns(25);
-        centerPanel.add(jtf);
+//        jtf.setColumns(25);
+        //       centerPanel.add(jtf);
 
         centerPanel.add(searchBtnPanel);
         return centerPanel;
@@ -308,4 +296,19 @@ public class FactoryPanels {
         return panel;
     }
 
+
+    public static void generateSubtitleCenterPanel() {
+
+        JPanel scp = new SubtitleCenterPanel();
+        GuiItems.setCenterSubtitlePanel(scp);
+
+    }
+
+    public static  void generateMainCenterPanel() {
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BorderLayout());
+        centerPanel.add(getCenterTopPanel(), BorderLayout.NORTH);
+        centerPanel.add(getCenterCenterPanel(), BorderLayout.CENTER);
+        GuiItems.setCenterMainPanel(centerPanel);
+    }
 }

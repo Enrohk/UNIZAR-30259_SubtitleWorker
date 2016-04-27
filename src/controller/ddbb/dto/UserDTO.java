@@ -37,18 +37,19 @@ public class UserDTO {
     public boolean validateUser ()
     {
 
-        if(PassCrypt.checkPassword(inputPass,getCryptPassFromDB()))
+        if(inputPass != null && inputPass.length() > 0)
+            if(PassCrypt.checkPassword(inputPass,getCryptPassFromDB()))
             return true;
         return false;
     }
 
 
     private String getCryptPassFromDB() {
-        return "";
+        return "1";
     }
 
     public static boolean isValidName(String name) {
 
-        return false;
+        return true;
     }
 }

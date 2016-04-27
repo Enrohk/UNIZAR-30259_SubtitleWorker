@@ -1,5 +1,7 @@
 package controller.facade;
 
+import controller.security.PropertiesKeys;
+import gui.components.LangButton;
 import gui.components.SubtitleListPanel;
 
 import javax.swing.*;
@@ -21,9 +23,26 @@ public class GuiItems {
     private static SubtitleListPanel rightSubtitlePanel, leftSubtitlePanel;
     private static String uploadPath;
     private static JFileChooser fileChooser = new JFileChooser();
+    private static JPanel centerMainPanel, centerSubtitlePanel, centerPanel, botPanel;
+
+    private static LangButton[] botBtns = { new LangButton(PropertiesKeys.MERGE_SUBTITLE_FILES_BTN), new LangButton(PropertiesKeys.BACK_TO_MAIN_BTN)};
+
+   public static LangButton getBotBtn (int pos)
+   {
+       return botBtns[pos];
+   }
 
     public static JTextField getLogInNameJTF() {
         return logInNameJTF;
+    }
+
+    public static void setMainBotPanel (JPanel botPanel)
+    {
+        GuiItems.botPanel = botPanel;
+    }
+
+    public static void setCenterPanel(JPanel centerPanel) {
+        GuiItems.centerPanel = centerPanel;
     }
 
     public static void setLogInNameJTF(JTextField logInNameJTF) {
@@ -105,6 +124,22 @@ public class GuiItems {
         GuiItems.resourceJTF = text;
     }
 
+    public static void setCenterMainPanel(JPanel centerPanel) {
+        GuiItems.centerMainPanel = centerPanel;
+    }
+
+    public static void setCenterSubtitlePanel(JPanel subtitlePanel) {
+        GuiItems.centerSubtitlePanel = subtitlePanel;
+    }
+
+    public static JPanel getCenterSubtitlePanel () {
+        return GuiItems.centerSubtitlePanel;
+    }
+
+    public static JPanel getCenterMainPanel() {
+        return GuiItems.centerMainPanel;
+    }
+
     public static String getResourceText() {
         return GuiItems.resourceJTF.getText();
     }
@@ -152,5 +187,14 @@ public class GuiItems {
 
     public static SubtitleListPanel getLeftSubtitlePanel() {
         return leftSubtitlePanel;
+    }
+
+    public static JPanel getCenterPanel ()
+    {
+        return centerPanel;
+    }
+
+    public static JPanel getMainBotPanel() {
+        return botPanel;
     }
 }

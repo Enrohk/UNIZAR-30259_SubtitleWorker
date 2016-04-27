@@ -1,5 +1,6 @@
 package controller.functions;
 
+import controller.ddbb.dto.SubtitleDTO;
 import model.ddbb.entity.Subtitle;
 
 import java.io.FileWriter;
@@ -8,7 +9,7 @@ import java.io.PrintWriter;
 
 public class FileCreator {
 
-    public static void downloadFileSubtitle(Subtitle subtitle, String fileDestPath) {
+    public static void downloadFileSubtitle(SubtitleDTO subtitle, String fileDestPath) {
         String finalPath = fileDestPath + "/" + subtitle.getTitle() + ".srt";
         try (PrintWriter pw = new PrintWriter(finalPath, "UTF-8");) {
             String subtitleContent = new String(subtitle.getContent());

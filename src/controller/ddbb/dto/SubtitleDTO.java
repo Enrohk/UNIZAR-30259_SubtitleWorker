@@ -3,6 +3,7 @@ package controller.ddbb.dto;
 
 import controller.functions.Functions;
 import model.ddbb.entity.Subtitle;
+import model.ddbb.entity.UserComentSubtitle;
 
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,10 @@ public class SubtitleDTO {
     private String title;
     private int workIdWork;
     private int languageIdLanguage;
+
+    public int getIdSubtitle() {
+        return idSubtitle;
+    }
 
     public byte[] getContent() {
         return content;
@@ -76,5 +81,15 @@ public class SubtitleDTO {
 
         this.setContent(strToString.getBytes());
 
+    }
+
+    public List<UserComentSubtitle> getCommentaries() {
+
+        return null;
+    }
+
+    public static SubtitleDTO getSubtitleDTOFromQuery(String s) {
+
+        return new SubtitleDTO();
     }
 }

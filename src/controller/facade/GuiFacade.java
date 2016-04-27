@@ -1,9 +1,11 @@
 package controller.facade;
 
 
+import controller.ddbb.dto.SubtitleDTO;
 import controller.functions.GuiFunctions;
 import controller.functions.LogFunctions;
 import controller.security.PropertiesKeys;
+import gui.components.SubtitleCenterPanel;
 import gui.factory.FactoryDialog;
 import model.ddbb.entity.Subtitle;
 
@@ -17,12 +19,12 @@ public class GuiFacade {
                 GuiFunctions.fillCenterPanelInfo();
                 break;
             case PropertiesKeys.LANG_DOWNLOAD_RIGHT_BUTTON:
-                Subtitle sR = GuiItems.getRightSubtitlePanel().getSelected();
+                SubtitleDTO sR = GuiItems.getRightSubtitlePanel().getSelected();
                 MainFacade.downloadSubtitle(GuiFunctions.showFileChooser(true), sR);
                 break;
 
             case PropertiesKeys.LANG_DOWNLOAD_LEFT_BUTTON:
-                Subtitle sL = GuiItems.getLeftSubtitlePanel().getSelected();
+                SubtitleDTO sL = GuiItems.getLeftSubtitlePanel().getSelected();
                 MainFacade.downloadSubtitle(GuiFunctions.showFileChooser(true), sL);
                 break;
 
@@ -35,10 +37,15 @@ public class GuiFacade {
                 break;
 
             case PropertiesKeys.MERGE_SUBTITLE_FILES_BTN:
-                Subtitle subLeft = GuiItems.getLeftSubtitlePanel().getSelected();
-                Subtitle subRight = GuiItems.getRightSubtitlePanel().getSelected();
+                SubtitleDTO subLeft = GuiItems.getLeftSubtitlePanel().getSelected();
+                SubtitleDTO subRight = GuiItems.getRightSubtitlePanel().getSelected();
                 MainFacade.downloadMergedSubtitle(GuiFunctions.showFileChooser(true), subLeft, subRight);
                 break;
+
+            case PropertiesKeys.BACK_TO_MAIN_BTN:
+                showCenterMain();
+                break;
+
         }
     }
 
@@ -54,5 +61,20 @@ public class GuiFacade {
         GuiFunctions.showGUI();
     }
 
+    public static void showSubtitlePanel (SubtitleDTO subtitle)
+    {
+        GuiItems.getCenterPanel().removeAll();
+        GuiItems.getCenterPanel().add(GuiItems.getCenterSubtitlePanel());
+        ((SubtitleCenterPanel)GuiItems.getCenterSubtitlePanel()).fillInfo(subtitle);
+        GuiFunctions.swapMergeBackBtn();
+        GuiFunctions.validateAndRepaint();
+    }
 
+
+    public static void showCenterMain() {
+        GuiItems.getCenterPanel().removeAll();
+        GuiItems.getCenterPanel().add(GuiItems.getCenterMainPanel());
+        GuiFunctions.swapMergeBackBtn();
+        GuiFunctions.validateAndRepaint();
+    }
 }

@@ -75,7 +75,7 @@ public class MainFacade {
         return workDTO;
     }
 
-    public static void downloadSubtitle(int fileChooserResult, Subtitle subtitle) {
+    public static void downloadSubtitle(int fileChooserResult, SubtitleDTO subtitle) {
 
         if (fileChooserResult == JFileChooser.APPROVE_OPTION) {
             String finalPath = GuiItems.getFileChooser().getSelectedFile().getPath();
@@ -127,7 +127,7 @@ public class MainFacade {
 
     }
 
-    public static void downloadMergedSubtitle(int fileChooserResult, Subtitle sL, Subtitle sR) {
+    public static void downloadMergedSubtitle(int fileChooserResult, SubtitleDTO sL, SubtitleDTO sR) {
 
         if (fileChooserResult == JFileChooser.APPROVE_OPTION) {
             SubtitleDTO merged = new SubtitleDTO();
@@ -141,14 +141,14 @@ public class MainFacade {
             merged.setContentFromStr(StrCreator.mergeStr(strParseL, strParseR));
             String finalPath = GuiItems.getFileChooser().getSelectedFile().getPath();
 
-            FileCreator.downloadFileSubtitle(merged.getSubtitle(), finalPath);
+            FileCreator.downloadFileSubtitle(merged, finalPath);
 
         }
 
     }
 
-
     public static void logged(UserDTO userDto, boolean keepLogged) {
 
     }
+
 }

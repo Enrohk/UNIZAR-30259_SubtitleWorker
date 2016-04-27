@@ -1,11 +1,14 @@
 package gui;
 
+import controller.facade.GuiFacade;
+import controller.facade.GuiItems;
 import controller.facade.MainFacade;
 import controller.languageHandler.CanChangeLanguage;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import exceptions.DBException;
 import exceptions.SomethingWrongHappenException;
+import gui.components.SubtitleCenterPanel;
 import gui.factory.FactoryPanels;
 
 import javax.swing.*;
@@ -16,6 +19,7 @@ import java.awt.event.WindowEvent;
 public class MainWindow extends JFrame implements CanChangeLanguage {
     public MainWindow() throws DBException {
         initFrame();
+        GuiFacade.showCenterMain();
         MainFacade.addLanguageListener(this);
     }
 
@@ -38,7 +42,11 @@ public class MainWindow extends JFrame implements CanChangeLanguage {
 
     private void addComponents() throws DBException {
         this.add(FactoryPanels.getMainTopPanel(), BorderLayout.NORTH);
-        this.add(FactoryPanels.getMainCenterPanel(), BorderLayout.CENTER);
+        FactoryPanels.generateMainCenterPanel();
+        FactoryPanels.generateSubtitleCenterPanel();
+        JPanel centerPanel = new JPanel();
+        GuiItems.setCenterPanel(centerPanel);
+        this.add(centerPanel,BorderLayout.CENTER);
         this.add(FactoryPanels.getMainBotPanel(), BorderLayout.SOUTH);
     }
 

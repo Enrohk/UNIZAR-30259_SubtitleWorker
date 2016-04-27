@@ -1,6 +1,7 @@
 package gui.components;
 
 
+import controller.ddbb.dto.SubtitleDTO;
 import model.ddbb.entity.Subtitle;
 
 import javax.swing.*;
@@ -31,12 +32,9 @@ public class SubtitleListPanel extends JPanel {
         p.setAlignmentX(Component.CENTER_ALIGNMENT);
         // subtitleCheckBoxList.add(scb);
         this.add(p);
-
-
-
     }
 
-    public Subtitle getSelected() {
+    public SubtitleDTO getSelected() {
         return ((SubtitleCheckBox) group.getSelectedCheckbox()).getSubtitle();
     }
 

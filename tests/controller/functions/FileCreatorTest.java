@@ -2,6 +2,7 @@ package controller.functions;
 
 
 import controller.ddbb.DataBaseManager;
+import controller.ddbb.dto.SubtitleDTO;
 import model.ddbb.entity.Subtitle;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -31,7 +32,8 @@ public class FileCreatorTest {
             assertTrue(subtitle.getIdSubtitle() > -1);
             String tempFileDest = "tmp";
 
-            FileCreator.downloadFileSubtitle(subtitle, tempFileDest);
+            SubtitleDTO subtitleDTO = SubtitleDTO.getSubtitleDTOFromQuery("");
+            FileCreator.downloadFileSubtitle(subtitleDTO, tempFileDest);
             String fileContent = FileContent.getFileContent(tempFileDest + "/" + subtitle.getTitle() + ".srt");
 
             String subtitleContent = new String(subtitle.getContent()).trim();

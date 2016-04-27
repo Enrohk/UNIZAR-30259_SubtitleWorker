@@ -12,7 +12,7 @@ public class WorkDTO {
     private int id;
     private String title;
     private byte[] description;
-    private List<Subtitle> subtitleList;
+    private List<SubtitleDTO> subtitleList;
 
     public String getTitle() {
         return title;
@@ -32,7 +32,7 @@ public class WorkDTO {
                 this.title = work.getTitle();
                 this.id = work.getIdWork();
                 query = QueryStrings.GET_SUBTITLES_BY_WORK_ID + "'" + this.id + "'";
-                this.subtitleList = (List<Subtitle>) DataBaseManager.getListByQuery(query);
+                //this.subtitleList = (List<Subtitle>) DataBaseManager.getListByQuery(query);
             }
 
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class WorkDTO {
 
     }
 
-    public List<Subtitle> getSubtitleList() {
+    public List<SubtitleDTO> getSubtitleList() {
         return subtitleList;
     }
 

@@ -56,11 +56,11 @@ public class PropertiesKeys {
     public static final String LOGGED_AS_LBL = "loggedAsLbl";
     public static final String MERGE_SUBTITLE_FILES_BTN = "joinSubtitleBtn";
     public static final String CANCEL_BTN = "cancelBtn";
+    public static final String BACK_TO_MAIN_BTN = "backBtn";
 
 
     //Testing
     public static final String TEST_TEXT = "test";
-
 
 
 }
