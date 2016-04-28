@@ -57,10 +57,13 @@ public class PropertiesKeys {
     public static final String MERGE_SUBTITLE_FILES_BTN = "joinSubtitleBtn";
     public static final String CANCEL_BTN = "cancelBtn";
     public static final String BACK_TO_MAIN_BTN = "backBtn";
-
+    public static final String MODIFY_TIME_BTN = "modifyTimeBtn";
+    public static final String RATE_BTN = "rateBtn";
 
     //Testing
     public static final String TEST_TEXT = "test";
 
+    //Labels
+    public static String CHANGE_TIME_SUB = "changeTimeSub";
 
 }

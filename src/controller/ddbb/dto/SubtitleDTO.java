@@ -83,7 +83,7 @@ public class SubtitleDTO {
 
     }
 
-    public List<UserComentSubtitle> getCommentaries() {
+    public List<CommentDTO> getCommentaries() {
 
         return null;
     }

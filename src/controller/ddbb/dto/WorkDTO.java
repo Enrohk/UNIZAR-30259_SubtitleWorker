@@ -22,6 +22,31 @@ public class WorkDTO {
         return description;
     }
 
+    public WorkDTO ()
+    {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(byte[] description) {
+        this.description = description;
+    }
+
+    public void setSubtitleList(List<SubtitleDTO> subtitleList) {
+        this.subtitleList = subtitleList;
+    }
+
     public WorkDTO(String name) throws DBException {
         try {
             String query = QueryStrings.GET_WORK_BY_NAME + "'" + name + "'";

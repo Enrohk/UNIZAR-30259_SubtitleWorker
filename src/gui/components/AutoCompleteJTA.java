@@ -33,10 +33,6 @@ public class AutoCompleteJTA {
     {
         JTextField jta = new JTextField();
         TextAutoCompleter complete=new TextAutoCompleter(jta);
-        /*for (String item: items)
-        {
-            complete.addItem(item);
-        }*/
         items.forEach( item -> complete.addItem(item));
         return jta;
 

@@ -19,7 +19,8 @@ public class GuiFunctions {
     private static int currentBotBtn = 1;
 
     public static void fillCenterPanelInfo() {
-        WorkDTO workDTO = MainFacade.getWorkDTO();
+        //WorkDTO workDTO = MainFacade.getWorkDTO();
+        WorkDTO workDTO = Mocker.work;
         if (workDTO != null) {
             GuiItems.getResourceJTA().setText(new String(workDTO.getDescription()));
             GuiItems.getResourceLabel().setText(workDTO.getTitle());
@@ -59,10 +60,8 @@ public class GuiFunctions {
 
 
     private static void setSubtitles(List<SubtitleDTO> subtitles) {
-
-        GuiItems.setRightSubtitlePanel(new SubtitleListPanel());
-        GuiItems.setLeftSubtitlePanel(new SubtitleListPanel());
-
+        GuiItems.getRightSubtitlePanel().clean();
+        GuiItems.getLeftSubtitlePanel().clean();
         for (SubtitleDTO s : subtitles) {
             GuiItems.getRightSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
             GuiItems.getLeftSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
