@@ -231,8 +231,8 @@ public class FactoryPanels {
         searchBtnPanel.add(new LangButton(PropertiesKeys.FILM_SEARCH_BUTTON));
         JTextField jtf = AutoCompleteJTA.getAutocompleteTextArea(Literals.WORK_TYPE);
         GuiItems.setResourceText(jtf);
-//        jtf.setColumns(25);
-        //       centerPanel.add(jtf);
+        //jtf.setColumns(25);
+        //centerPanel.add(jtf);
 
         centerPanel.add(searchBtnPanel);
         return centerPanel;

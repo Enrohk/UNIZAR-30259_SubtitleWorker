@@ -12,30 +12,35 @@ import java.util.List;
 
 public class SubtitleListPanel extends JPanel {
 
-    //private List<SubtitleCheckBox> subtitleCheckBoxList;
     private CheckboxGroup group;
 
 
     public SubtitleListPanel() {
         group = new CheckboxGroup();
-
-        //    subtitleCheckBoxList = new ArrayList<>();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-     //   this.setLayout(new FlowLayout());
 
     }
 
     public void addSubtitle(SubtitleCheckBox scb) {
         scb.setCheckboxGroup(group);
         JPanel p = new JPanel();
+        p.setLayout(new GridLayout(0,3));
         p.add(scb);
+        p.add(new ClickableJLabel (scb.getSubtitle()));
         p.setAlignmentX(Component.CENTER_ALIGNMENT);
-        // subtitleCheckBoxList.add(scb);
+
         this.add(p);
     }
 
     public SubtitleDTO getSelected() {
         return ((SubtitleCheckBox) group.getSelectedCheckbox()).getSubtitle();
+    }
+
+    public void clean ()
+    {
+        this.removeAll();
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        group = new CheckboxGroup();
     }
 
 }

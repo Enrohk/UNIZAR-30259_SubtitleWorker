@@ -24,6 +24,7 @@ public class GuiItems {
     private static String uploadPath;
     private static JFileChooser fileChooser = new JFileChooser();
     private static JPanel centerMainPanel, centerSubtitlePanel, centerPanel, botPanel;
+    private static JSpinner modifySpinner;
 
     private static LangButton[] botBtns = { new LangButton(PropertiesKeys.MERGE_SUBTITLE_FILES_BTN), new LangButton(PropertiesKeys.BACK_TO_MAIN_BTN)};
 
@@ -196,5 +197,14 @@ public class GuiItems {
 
     public static JPanel getMainBotPanel() {
         return botPanel;
+    }
+
+    public static void setModifySpinner(JSpinner sp) {
+        GuiItems.modifySpinner = sp;
+    }
+
+    public static JSpinner getModifySpinner()
+    {
+        return modifySpinner;
     }
 }
