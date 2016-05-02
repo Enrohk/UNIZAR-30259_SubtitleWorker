@@ -56,8 +56,7 @@ public class WorkDTO {
                 this.description = work.getDescription();
                 this.title = work.getTitle();
                 this.id = work.getIdWork();
-                query = QueryStrings.GET_SUBTITLES_BY_WORK_ID + "'" + this.id + "'";
-                //this.subtitleList = (List<Subtitle>) DataBaseManager.getListByQuery(query);
+                this.subtitleList = SubtitleDTO.getSubtitlesFromWorkId(this.id);
             }
 
         } catch (Exception e) {

@@ -3,9 +3,6 @@ package model.ddbb.entity;
 import javax.persistence.*;
 import java.util.Arrays;
 
-/**
- * Created by ramon on 12/04/2016.
- */
 @Entity
 @IdClass(SubtitlePK.class)
 public class Subtitle {

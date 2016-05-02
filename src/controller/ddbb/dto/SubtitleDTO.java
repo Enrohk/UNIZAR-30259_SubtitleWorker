@@ -1,10 +1,14 @@
 package controller.ddbb.dto;
 
 
+import controller.ddbb.DataBaseManager;
+import controller.ddbb.QueryStrings;
 import controller.functions.Functions;
+import exceptions.DBException;
 import model.ddbb.entity.Subtitle;
 import model.ddbb.entity.UserComentSubtitle;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -91,5 +95,19 @@ public class SubtitleDTO {
     public static SubtitleDTO getSubtitleDTOFromQuery(String s) {
 
         return new SubtitleDTO();
+    }
+
+    public static List<SubtitleDTO> getSubtitlesFromWorkId (int workId) throws DBException {
+        String query = QueryStrings.GET_SUBTITLES_BY_WORK_ID + "'" + workId + "'";
+        List<Subtitle> dbList = (List<Subtitle>) DataBaseManager.getListByQuery(query);
+
+        List<SubtitleDTO> subtitleList = new ArrayList<>();
+
+        if(dbList != null && dbList.size()>0)
+        {
+            dbList.forEach(dbSubtitle -> subtitleList.add(Functions.createSubtitleDTO(dbSubtitle)));
+        }
+
+        return subtitleList;
     }
 }

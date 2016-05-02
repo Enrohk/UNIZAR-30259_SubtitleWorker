@@ -1,8 +1,10 @@
 package controller.functions;
 
 import controller.ddbb.DBMapNameId;
+import controller.ddbb.dto.SubtitleDTO;
 import exceptions.FunctionException;
 import model.ddbb.entity.Language;
+import model.ddbb.entity.Subtitle;
 import model.ddbb.entity.Work;
 
 import java.io.*;
@@ -122,5 +124,15 @@ public class Functions {
     public static boolean isValidMail (String mail)
     {
         return mail.contains("@") && mail.indexOf(" ") < 0 ;
+    }
+
+    public static SubtitleDTO createSubtitleDTO(Subtitle dbSubtitle) {
+
+        SubtitleDTO subtitleDTO = new SubtitleDTO();
+        subtitleDTO.setTitle(dbSubtitle.getTitle());
+        subtitleDTO.setContent(dbSubtitle.getContent());
+        subtitleDTO.setWorkIdWork(dbSubtitle.getWorkIdWork());
+        subtitleDTO.setLanguageIdLanguage(dbSubtitle.getLanguageIdLanguage());
+        return subtitleDTO;
     }
 }

@@ -1,15 +1,9 @@
 package main;
 
 import controller.ddbb.DBMapNameId;
-import controller.facade.GuiFacade;
-import controller.facade.GuiItems;
-import controller.facade.MainFacade;
 import controller.functions.GuiFunctions;
-import controller.functions.Mocker;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
-import exceptions.DBException;
-import gui.MainWindow;
 
 import javax.swing.*;
 import java.util.logging.Level;
@@ -38,7 +32,7 @@ public class Main {
     {
         //GuiFacade.start()
         GuiFunctions.showGUI();
-        Mocker.generateMocks();
+
 
     }
 }

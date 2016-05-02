@@ -45,7 +45,7 @@ public class SubtitleCenterPanel extends JPanel {
             if(subtitle.getCommentaries()!= null && subtitle.getCommentaries().size() > 0)
         commentListPanel.addComments(subtitle.getCommentaries());
             if(subtitle.getContent()!=null)
-        contentPanel.addContent(subtitle.getContent().toString());
+        contentPanel.addContent(new String(subtitle.getContent()));
         this.validate();
         this.repaint();
     }
