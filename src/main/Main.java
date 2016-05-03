@@ -1,9 +1,11 @@
 package main;
 
 import controller.ddbb.DBMapNameId;
+import controller.facade.GuiFacade;
 import controller.functions.GuiFunctions;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
+import exceptions.DBException;
 
 import javax.swing.*;
 import java.util.logging.Level;
@@ -30,8 +32,12 @@ public class Main {
 
     private static void start ()
     {
-        //GuiFacade.start()
-        GuiFunctions.showGUI();
+        try {
+            GuiFacade.start();
+        } catch (DBException e) {
+            e.printStackTrace();
+        }
+        //GuiFunctions.showGUI();
 
 
     }

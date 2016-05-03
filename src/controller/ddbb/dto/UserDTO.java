@@ -1,10 +1,11 @@
 package controller.ddbb.dto;
 
 import controller.ddbb.DataBaseManager;
+import controller.ddbb.QueryStrings;
 import controller.security.PassCrypt;
 import exceptions.DBException;
 import model.ddbb.entity.User;
-
+import java.util.List;
 public class UserDTO {
 
     private String name;
@@ -34,8 +35,7 @@ public class UserDTO {
         return true;
     }
 
-    public boolean validateUser ()
-    {
+    public boolean validateUser () throws DBException {
 
         if(inputPass != null && inputPass.length() > 0)
             if(PassCrypt.checkPassword(inputPass,getCryptPassFromDB()))
@@ -44,12 +44,31 @@ public class UserDTO {
     }
 
 
-    private String getCryptPassFromDB() {
-        return "1";
+    private String getCryptPassFromDB() throws DBException {
+        return getUserFromDBByName(name).getPass();
     }
 
     public static boolean isValidName(String name) {
 
-        return true;
+        try {
+            getUserFromDBByName(name);
+            return true;
+        }
+        catch (DBException e)
+        {
+            return false;
+        }
+    }
+
+    private static User getUserFromDBByName (String name) throws DBException {
+
+        String query = QueryStrings.GET_USER_BY_NAME  + "'" + name + "'";
+        List dbResultList = DataBaseManager.getListByQuery(query);
+        if(dbResultList != null && dbResultList.size()==1)
+        {
+            return ((User) dbResultList.get(0));
+        }
+        throw new DBException("User not found");
+
     }
 }

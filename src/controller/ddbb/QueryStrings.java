@@ -8,4 +8,7 @@ public class QueryStrings {
     public static final String GET_LANGUAGE_BY_NAME = "from Language where name=";
     public static final String GET_LANGUAGE_LIST = "from Language";
     public static final String GET_WORK_LIST = "from Work";
+    public static final String GET_USER_BY_NAME = "from User where username=";
+
+
 }

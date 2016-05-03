@@ -11,7 +11,7 @@ import gui.factory.FactoryDialog;
 
 public class LogFunctions {
 
-    public static void logIn() {
+    public static void logIn() throws DBException {
 
         UserDTO userDto = getUserInput(false);
 
@@ -19,13 +19,12 @@ public class LogFunctions {
             start(userDto);
         } else {
             FactoryDialog.invalidLogin();
-            GuiFacade.start();
         }
 
 
     }
 
-    public static void registerPanel() {
+    public static void registerPanel() throws DBException {
         int registerClickResponse = FactoryDialog.registerGUIDialog();
 
         if (registerClickResponse == 0) {
@@ -47,7 +46,6 @@ public class LogFunctions {
         else
             System.exit(0);
 
-        GuiFunctions.showGUI();
 
     }
 

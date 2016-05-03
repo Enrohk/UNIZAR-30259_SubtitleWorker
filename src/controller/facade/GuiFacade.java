@@ -5,6 +5,7 @@ import controller.ddbb.dto.SubtitleDTO;
 import controller.functions.GuiFunctions;
 import controller.functions.LogFunctions;
 import controller.security.PropertiesKeys;
+import exceptions.DBException;
 import gui.components.SubtitleCenterPanel;
 import gui.factory.FactoryDialog;
 import model.ddbb.entity.Subtitle;
@@ -49,7 +50,7 @@ public class GuiFacade {
         }
     }
 
-    public static void start() {
+    public static void start() throws DBException {
         int logInClickResult = FactoryDialog.loginGUIDialog();
         if (logInClickResult == 0)
             LogFunctions.logIn();
@@ -57,8 +58,6 @@ public class GuiFacade {
             LogFunctions.registerPanel();
         else
             System.exit(0);
-
-        GuiFunctions.showGUI();
     }
 
     public static void showSubtitlePanel (SubtitleDTO subtitle)
