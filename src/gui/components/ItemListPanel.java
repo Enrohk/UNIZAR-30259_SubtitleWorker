@@ -17,7 +17,7 @@ public class ItemListPanel extends JPanel {
     }
 
     private void addComponents() {
-        JPanel topPanel = FactoryPanels.getTopSearchPanel();
+        JPanel topPanel = FactoryPanels.getTopSearchPanel(buttonSearchPK);
         topPanel.add(new LangButton(buttonSearchPK));
         this.add(topPanel, BorderLayout.NORTH);
         this.add(new LangButton(buttonDownloadPK), BorderLayout.SOUTH);

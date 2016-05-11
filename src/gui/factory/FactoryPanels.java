@@ -121,12 +121,21 @@ public class FactoryPanels {
         return botPanel;
     }
 
-    public static JPanel getTopSearchPanel() {
+    public static JPanel getTopSearchPanel(String side) {
         JPanel topSearchPanel = new JPanel();
         JComboBox<String> langDDL = new JComboBox<>(Functions.getLanguageArray());
         langDDL.setSelectedIndex(0);
         langDDL.setAlignmentX(Component.CENTER_ALIGNMENT);
         topSearchPanel.add(langDDL);
+        switch (side)
+        {
+            case PropertiesKeys.LANG_SEARCH_RIGHT_BUTTON:
+                GuiItems.setddlLangRight(langDDL);
+               break;
+            case PropertiesKeys.LANG_SEARCH_LEFT_BUTTON:
+                GuiItems.setddlLangLeft(langDDL);
+                break;
+        }
         return topSearchPanel;
     }
 

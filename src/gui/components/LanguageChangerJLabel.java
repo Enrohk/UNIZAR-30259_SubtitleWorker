@@ -3,6 +3,8 @@ package gui.components;
 import controller.facade.GuiFacade;
 import controller.functions.Functions;
 import controller.functions.GuiFunctions;
+import exceptions.DBException;
+import exceptions.FunctionException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +28,13 @@ public class LanguageChangerJLabel extends JLabel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                GuiFacade.click(key);
+                try {
+                    GuiFacade.click(key);
+                } catch (DBException e1) {
+                    e1.printStackTrace();
+                } catch (FunctionException e1) {
+                    e1.printStackTrace();
+                }
             }
 
             @Override

@@ -4,6 +4,8 @@ import controller.facade.GuiFacade;
 import controller.languageHandler.CanChangeLanguage;
 import controller.languageHandler.ChangeLanguageObserver;
 import controller.security.PropertiesHandler;
+import exceptions.DBException;
+import exceptions.FunctionException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +19,15 @@ public class LangButton extends JButton implements CanChangeLanguage {
         this.propertyKey = propertyKey;
         this.setText(PropertiesHandler.getLanguageValue(propertyKey));
         ChangeLanguageObserver.addNewListener(this);
-        this.addActionListener( e -> GuiFacade.click(propertyKey) );
+        this.addActionListener(e -> {
+            try {
+                GuiFacade.click(propertyKey);
+            } catch (DBException e1) {
+                e1.printStackTrace();
+            } catch (FunctionException e1) {
+                e1.printStackTrace();
+            }
+        });
     }
 
 

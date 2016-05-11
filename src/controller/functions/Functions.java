@@ -1,11 +1,13 @@
 package controller.functions;
 
 import controller.ddbb.DBMapNameId;
+import controller.ddbb.dto.CommentDTO;
 import controller.ddbb.dto.SubtitleDTO;
 import controller.security.PropertiesKeys;
 import exceptions.FunctionException;
 import model.ddbb.entity.Language;
 import model.ddbb.entity.Subtitle;
+import model.ddbb.entity.UserComentSubtitle;
 import model.ddbb.entity.Work;
 
 import javax.swing.*;
@@ -136,6 +138,7 @@ public class Functions {
         subtitleDTO.setContent(dbSubtitle.getContent());
         subtitleDTO.setWorkIdWork(dbSubtitle.getWorkIdWork());
         subtitleDTO.setLanguageIdLanguage(dbSubtitle.getLanguageIdLanguage());
+        subtitleDTO.setIdSubtitle(dbSubtitle.getIdSubtitle());
         return subtitleDTO;
     }
 
@@ -158,5 +161,14 @@ public class Functions {
 
         return images;
 
+    }
+
+    public static CommentDTO createCommentDTO(UserComentSubtitle dbComment) {
+
+        CommentDTO commentDto = new CommentDTO();
+        commentDto.setRate(Integer.parseInt(dbComment.getPunt()));
+        commentDto.setText(dbComment.getText());
+        commentDto.setAuthor("NOT IMPLEMENTED");
+        return commentDto;
     }
 }

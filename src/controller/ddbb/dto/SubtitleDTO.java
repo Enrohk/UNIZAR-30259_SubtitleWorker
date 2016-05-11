@@ -4,7 +4,10 @@ package controller.ddbb.dto;
 import controller.ddbb.DataBaseManager;
 import controller.ddbb.QueryStrings;
 import controller.functions.Functions;
+import controller.functions.Literals;
+import controller.security.PropertiesKeys;
 import exceptions.DBException;
+import exceptions.FunctionException;
 import model.ddbb.entity.Subtitle;
 import model.ddbb.entity.UserComentSubtitle;
 
@@ -20,6 +23,10 @@ public class SubtitleDTO {
     private String title;
     private int workIdWork;
     private int languageIdLanguage;
+
+    public void setIdSubtitle(int idSubtitle) {
+        this.idSubtitle = idSubtitle;
+    }
 
     public int getIdSubtitle() {
         return idSubtitle;
@@ -87,9 +94,16 @@ public class SubtitleDTO {
 
     }
 
-    public List<CommentDTO> getCommentaries() {
+    public List<CommentDTO> getCommentaries() throws DBException {
 
-        return null;
+        String query = QueryStrings.getComentsBySubtitleId+"'"+this.idSubtitle+"'";
+        List<UserComentSubtitle> dbList = (List<UserComentSubtitle>) DataBaseManager.getListByQuery(query);
+        List<CommentDTO> commentList = new ArrayList<>();
+        if(dbList != null && dbList.size()>0)
+        {
+            dbList.forEach(dbComment -> commentList.add(Functions.createCommentDTO(dbComment)));
+        }
+        return commentList;
     }
 
     public static SubtitleDTO getSubtitleDTOFromQuery(String s) {
@@ -97,8 +111,8 @@ public class SubtitleDTO {
         return new SubtitleDTO();
     }
 
-    public static List<SubtitleDTO> getSubtitlesFromWorkId (int workId) throws DBException {
-        String query = QueryStrings.GET_SUBTITLES_BY_WORK_ID + "'" + workId + "'";
+    public static List<SubtitleDTO> getSubtitlesFromQuery (String query) throws DBException {
+
         List<Subtitle> dbList = (List<Subtitle>) DataBaseManager.getListByQuery(query);
 
         List<SubtitleDTO> subtitleList = new ArrayList<>();
@@ -110,4 +124,5 @@ public class SubtitleDTO {
 
         return subtitleList;
     }
+
 }

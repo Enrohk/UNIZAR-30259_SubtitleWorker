@@ -25,6 +25,7 @@ public class GuiItems {
     private static JFileChooser fileChooser = new JFileChooser();
     private static JPanel centerMainPanel, centerSubtitlePanel, centerPanel, botPanel;
     private static JSpinner modifySpinner;
+    private static JComboBox<String> ddlLangLeft, ddlLangRight;
 
     private static LangButton[] botBtns = { new LangButton(PropertiesKeys.MERGE_SUBTITLE_FILES_BTN), new LangButton(PropertiesKeys.BACK_TO_MAIN_BTN)};
 
@@ -206,5 +207,23 @@ public class GuiItems {
     public static JSpinner getModifySpinner()
     {
         return modifySpinner;
+    }
+
+    public static void setddlLangLeft(JComboBox<String> DDLangLeft) {
+        GuiItems.ddlLangLeft = DDLangLeft;
+    }
+
+    public static void setddlLangRight(JComboBox<String> DDLangLeft) {
+        GuiItems.ddlLangRight = DDLangLeft;
+    }
+
+    public static String getLangRightSelected ()
+    {
+        return (String) ddlLangRight.getSelectedItem();
+    }
+
+    public static String getLangLeftSelected ()
+    {
+        return (String) ddlLangLeft.getSelectedItem();
     }
 }

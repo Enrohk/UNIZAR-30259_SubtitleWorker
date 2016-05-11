@@ -1,6 +1,8 @@
 package gui.components;
 
 import controller.ddbb.dto.SubtitleDTO;
+import exceptions.DBException;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -38,8 +40,7 @@ public class SubtitleCenterPanel extends JPanel {
 
     }
 
-    public void fillInfo (SubtitleDTO subtitle)
-    {
+    public void fillInfo (SubtitleDTO subtitle) throws DBException {
         clear();
         titleLabel.setText(subtitle.getTitle());
             if(subtitle.getCommentaries()!= null && subtitle.getCommentaries().size() > 0)

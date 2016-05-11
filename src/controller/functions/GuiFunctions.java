@@ -1,11 +1,13 @@
 package controller.functions;
 
 
+import controller.ddbb.QueryStrings;
 import controller.ddbb.dto.SubtitleDTO;
 import controller.ddbb.dto.WorkDTO;
 import controller.facade.GuiItems;
 import controller.facade.MainFacade;
 import exceptions.DBException;
+import exceptions.FunctionException;
 import gui.MainWindow;
 import gui.components.SubtitleCheckBox;
 import gui.components.SubtitleListPanel;
@@ -65,6 +67,36 @@ public class GuiFunctions {
         {
             for (SubtitleDTO s : subtitles) {
                 GuiItems.getRightSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
+                GuiItems.getLeftSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
+            }
+        }
+        validateAndRepaint();
+    }
+
+    public static void setRightSubtitles () throws DBException, FunctionException {
+        GuiItems.getRightSubtitlePanel().clean();
+        int workId = MainFacade.getWorkDTO().getId();
+        String lang = GuiItems.getLangRightSelected();
+
+        List<SubtitleDTO> subtitles = SubtitleDTO.getSubtitlesFromQuery(QueryStrings.getSubtitleQuery(workId,lang));
+        if(subtitles!=null && subtitles.size()>0)
+        {
+            for (SubtitleDTO s : subtitles) {
+                GuiItems.getRightSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
+            }
+        }
+        validateAndRepaint();
+    }
+
+    public static void setLeftSubtitles () throws DBException {
+        GuiItems.getLeftSubtitlePanel().clean();
+        int workId = MainFacade.getWorkDTO().getId();
+        String lang = GuiItems.getLangLeftSelected();
+
+        List<SubtitleDTO> subtitles = SubtitleDTO.getSubtitlesFromQuery(QueryStrings.getSubtitleQuery(workId,lang));
+        if(subtitles!=null && subtitles.size()>0)
+        {
+            for (SubtitleDTO s : subtitles) {
                 GuiItems.getLeftSubtitlePanel().addSubtitle(new SubtitleCheckBox(s));
             }
         }

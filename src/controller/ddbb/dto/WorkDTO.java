@@ -4,6 +4,7 @@ import java.util.*;
 
 import controller.ddbb.DataBaseManager;
 import controller.ddbb.QueryStrings;
+import controller.functions.Literals;
 import exceptions.DBException;
 import model.ddbb.entity.*;
 
@@ -56,7 +57,7 @@ public class WorkDTO {
                 this.description = work.getDescription();
                 this.title = work.getTitle();
                 this.id = work.getIdWork();
-                this.subtitleList = SubtitleDTO.getSubtitlesFromWorkId(this.id);
+                this.subtitleList = SubtitleDTO.getSubtitlesFromQuery(QueryStrings.getSubtitleQuery(this.id, Literals.LIST_FIRST_ITEM));
             }
 
         } catch (Exception e) {

@@ -2,6 +2,7 @@ package gui.components;
 
 import controller.ddbb.dto.SubtitleDTO;
 import controller.facade.GuiFacade;
+import exceptions.DBException;
 
 import javax.print.DocFlavor;
 import javax.swing.*;
@@ -33,7 +34,11 @@ public class ClickableJLabel extends JPanel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                GuiFacade.showSubtitlePanel(subtitleDTO);
+                try {
+                    GuiFacade.showSubtitlePanel(subtitleDTO);
+                } catch (DBException e1) {
+                    e1.printStackTrace();
+                }
                 text.setForeground(c);
             }
 

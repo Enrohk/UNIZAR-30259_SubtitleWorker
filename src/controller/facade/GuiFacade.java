@@ -7,6 +7,7 @@ import controller.functions.LogFunctions;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import exceptions.DBException;
+import exceptions.FunctionException;
 import gui.components.SubtitleCenterPanel;
 import gui.factory.FactoryDialog;
 import main.Main;
@@ -15,7 +16,7 @@ import model.ddbb.entity.Subtitle;
 public class GuiFacade {
 
 
-    public static void click(String propertyKey) {
+    public static void click(String propertyKey) throws DBException, FunctionException {
 
         switch (propertyKey) {
             case PropertiesKeys.FILM_SEARCH_BUTTON:
@@ -58,6 +59,14 @@ public class GuiFacade {
             case PropertiesKeys.LOG_OUT_BUTTON:
                 MainFacade.logOut();
                 break;
+            case PropertiesKeys.LANG_SEARCH_RIGHT_BUTTON :
+                GuiFunctions.setRightSubtitles();
+                break;
+
+            case PropertiesKeys.LANG_SEARCH_LEFT_BUTTON :
+                GuiFunctions.setLeftSubtitles();
+                break;
+
 
         }
     }
@@ -79,8 +88,7 @@ public class GuiFacade {
 
     }
 
-    public static void showSubtitlePanel (SubtitleDTO subtitle)
-    {
+    public static void showSubtitlePanel (SubtitleDTO subtitle) throws DBException {
         GuiItems.getCenterPanel().removeAll();
         GuiItems.getCenterPanel().add(GuiItems.getCenterSubtitlePanel());
         ((SubtitleCenterPanel)GuiItems.getCenterSubtitlePanel()).fillInfo(subtitle);
