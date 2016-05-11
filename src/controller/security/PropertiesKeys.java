@@ -9,6 +9,10 @@ public class PropertiesKeys {
     public final static String CONFIG_PROPERTIES_PATH = "resources//config//config.properties";
     public final static String ICON_PATH = "resources//images//frameIcon.png";
     public static final String ICON_LOGIN_PATH = "resources//images//frameIcon.png";
+    public static final String ICON_LANG_ES_0 = "resources//images//lang//esp//0.png";
+    public static final String ICON_LANG_ES_1 = "resources//images//lang//esp//1.gif";
+    public static final String ICON_LANG_EN_0 = "resources//images//lang//eng//0.png";
+    public static final String ICON_LANG_EN_1 = "resources//images//lang//eng//1.gif";
 
     //Config keys
     public static final String WINDOW_DIMENSION_X = "1000";

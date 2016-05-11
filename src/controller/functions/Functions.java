@@ -2,11 +2,14 @@ package controller.functions;
 
 import controller.ddbb.DBMapNameId;
 import controller.ddbb.dto.SubtitleDTO;
+import controller.security.PropertiesKeys;
 import exceptions.FunctionException;
 import model.ddbb.entity.Language;
 import model.ddbb.entity.Subtitle;
 import model.ddbb.entity.Work;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -134,5 +137,26 @@ public class Functions {
         subtitleDTO.setWorkIdWork(dbSubtitle.getWorkIdWork());
         subtitleDTO.setLanguageIdLanguage(dbSubtitle.getLanguageIdLanguage());
         return subtitleDTO;
+    }
+
+    public static ImageIcon[] getImages(String type) {
+
+        ImageIcon[] images = new ImageIcon[2];
+
+        switch (type)
+        {
+            case PropertiesKeys.ENGLISH_LANG:
+                images[0] = new ImageIcon(PropertiesKeys.ICON_LANG_EN_0);
+                images[1] = new ImageIcon(PropertiesKeys.ICON_LANG_EN_1);
+                break;
+
+            case PropertiesKeys.SPANISH_LANG:
+                images[0] = new ImageIcon(PropertiesKeys.ICON_LANG_ES_0);
+                images[1] = new ImageIcon(PropertiesKeys.ICON_LANG_ES_1);
+                break;
+        }
+
+        return images;
+
     }
 }

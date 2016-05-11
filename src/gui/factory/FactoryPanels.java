@@ -216,8 +216,8 @@ public class FactoryPanels {
     private static JPanel getChangeLanguagePanel() {
         JPanel changeLangPanel = new JPanel();
 
-        JLabel l1 = new LanguageChangerJLabel("ES",PropertiesKeys.SPANISH_LANG);
-        JLabel l2 = new LanguageChangerJLabel("EN",PropertiesKeys.ENGLISH_LANG);
+        JLabel l1 = new LanguageChangerJLabel(PropertiesKeys.SPANISH_LANG);
+        JLabel l2 = new LanguageChangerJLabel(PropertiesKeys.ENGLISH_LANG);
         changeLangPanel.add(l1);
         changeLangPanel.add(l2);
 
