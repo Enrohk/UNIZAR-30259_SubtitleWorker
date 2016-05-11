@@ -11,20 +11,22 @@ import gui.factory.FactoryDialog;
 
 public class LogFunctions {
 
-    public static void logIn() throws DBException {
+    public static boolean logIn() throws DBException {
 
         UserDTO userDto = getUserInput(false);
 
         if (userDto.validateUser()) {
             start(userDto);
+            return true;
         } else {
             FactoryDialog.invalidLogin();
+            return false;
         }
 
 
     }
 
-    public static void registerPanel() throws DBException {
+    public static boolean registerPanel() throws DBException {
         int registerClickResponse = FactoryDialog.registerGUIDialog();
 
         if (registerClickResponse == 0) {
@@ -40,12 +42,10 @@ public class LogFunctions {
                 }
 
                 start(registerUser);
+                return true;
             }
-        } else if (registerClickResponse == 1)
-            GuiFacade.start();
-        else
-            System.exit(0);
-
+        }
+        return false;
 
     }
 

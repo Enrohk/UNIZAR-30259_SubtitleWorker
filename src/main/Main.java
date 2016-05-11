@@ -34,8 +34,8 @@ public class Main {
     private static void start ()
     {
         try {
-            //GuiFacade.start();
-            GuiFunctions.showGUI();
+            GuiFacade.start();
+            //GuiFunctions.showGUI();
         } catch (Exception e) {
             e.printStackTrace();
         }

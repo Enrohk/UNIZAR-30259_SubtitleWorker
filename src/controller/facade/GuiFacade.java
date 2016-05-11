@@ -60,16 +60,19 @@ public class GuiFacade {
     }
 
     public static void start() throws DBException {
-        int logInClickResult = FactoryDialog.loginGUIDialog();
-        if (logInClickResult == 0)
-            LogFunctions.logIn();
-        else if (logInClickResult == 1)
-            LogFunctions.registerPanel();
-        else
-            System.exit(0);
+        boolean logged = false;
+        while (!logged) {
+            int logInClickResult = FactoryDialog.loginGUIDialog();
+            if (logInClickResult == 0)
+            {
+                 logged = LogFunctions.logIn();
 
-        if (MainFacade.getLoggedUser() == null)
-            start();
+            }
+            else if (logInClickResult == 1)
+                logged = LogFunctions.registerPanel();
+            else
+                System.exit(0);
+        }
 
     }
 
