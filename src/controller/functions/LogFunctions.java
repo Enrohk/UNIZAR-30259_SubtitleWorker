@@ -49,7 +49,6 @@ public class LogFunctions {
 
     }
 
-
     private static UserDTO getUserInput(boolean isRegisterInput) {
         String name, pass, mail, pass2;
         name = GuiItems.getLogInNameJTF().getText();
@@ -95,7 +94,13 @@ public class LogFunctions {
     }
 
     private static void start(UserDTO userDto) {
-        if (GuiItems.isKeepLogged()) MainFacade.logged(userDto, true);
+        if (GuiItems.isKeepLogged())
+        {
+            MainFacade.logged(userDto, true);
+        }
+        else{
+            MainFacade.logged(userDto,false);
+        }
         GuiFunctions.showGUI();
     }
 }

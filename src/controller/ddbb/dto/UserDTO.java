@@ -19,6 +19,14 @@ public class UserDTO {
         this.mail = mail;
     }
 
+    public String getInputPass() {
+        return inputPass;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public boolean registerUser () throws DBException {
         User user = new User();
         user.setEmail(mail);

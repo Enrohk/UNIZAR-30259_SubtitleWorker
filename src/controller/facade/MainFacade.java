@@ -10,6 +10,7 @@ import controller.functions.*;
 import controller.languageHandler.CanChangeLanguage;
 import controller.languageHandler.ChangeLanguageObserver;
 import controller.security.PropertiesHandler;
+import controller.security.PropertiesKeys;
 import exceptions.DBException;
 import exceptions.SomethingWrongHappenException;
 import gui.factory.FactoryDialog;
@@ -157,7 +158,27 @@ public class MainFacade {
 
     public static void logged(UserDTO userDto, boolean keepLogged) {
         MainFacade.loggedUser = userDto;
-        System.out.print("yes");
+        if(keepLogged)
+        {
+            String[] key = {PropertiesKeys.LOGGED_PASSWORD, PropertiesKeys.LOGGED_USERNAME};
+            String[] value = {loggedUser.getInputPass(), loggedUser.getName()};
+            PropertiesHandler.setConfigValue(key,value);
+        }
     }
 
+    public static boolean isLoggedUser() throws DBException {
+
+        String keepUser = PropertiesHandler.getConfigValue(PropertiesKeys.LOGGED_USERNAME);
+        String keepPass = PropertiesHandler.getConfigValue(PropertiesKeys.LOGGED_PASSWORD);
+        UserDTO userDto = new UserDTO(keepUser,keepPass,"");
+        return userDto.validateUser();
+
+    }
+
+    public static void logOut()
+    {
+        String[] empty = new String[0];
+        PropertiesHandler.setConfigValue(empty,empty);
+        System.exit(0);
+    }
 }

@@ -34,8 +34,11 @@ public class Main {
     private static void start ()
     {
         try {
-            GuiFacade.start();
-            //GuiFunctions.showGUI();
+            if(MainFacade.isLoggedUser())
+                GuiFunctions.showGUI();
+            else
+                GuiFacade.start();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

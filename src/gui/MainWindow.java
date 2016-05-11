@@ -25,10 +25,8 @@ public class MainWindow extends JFrame implements CanChangeLanguage {
 
 
     private void initFrame() throws DBException {
-        String xString = PropertiesHandler.getConfigValue(PropertiesKeys.WINDOW_DIMENSION_X),
-                yString = PropertiesHandler.getConfigValue(PropertiesKeys.WINDOW_DIMENSION_Y);
 
-        this.setSize(Integer.parseInt(xString), Integer.parseInt(yString));
+        this.setSize(Integer.parseInt(PropertiesKeys.WINDOW_DIMENSION_X), Integer.parseInt(PropertiesKeys.WINDOW_DIMENSION_Y));
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);

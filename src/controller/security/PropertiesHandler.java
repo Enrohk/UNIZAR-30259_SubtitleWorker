@@ -1,10 +1,9 @@
 package controller.security;
 
-
-import controller.facade.MainFacade;
-
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Properties;
 
 public class PropertiesHandler {
@@ -13,13 +12,42 @@ public class PropertiesHandler {
     private final static Properties configProperties = new Properties();
 
     public static String getLanguageValue(String key) {
-        //HANDLE ERROR
         return langProperties.getProperty(key);
     }
 
     public static String getConfigValue(String key) {
-        //HANDLE ERROR
         return configProperties.getProperty(key);
+    }
+
+    public static void setConfigValue (String[] key, String[] value)
+    {
+        Properties prop = new Properties();
+        OutputStream output = null;
+
+        try {
+
+            output = new FileOutputStream(PropertiesKeys.CONFIG_PROPERTIES_PATH);
+
+            // set the properties value
+            for (int i=0;i<key.length;i++)
+            {
+                prop.setProperty(key[i],value[i]);
+            }
+            // save properties to project root folder
+            prop.store(output, null);
+
+        } catch (IOException io) {
+            io.printStackTrace();
+        } finally {
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
     }
 
 

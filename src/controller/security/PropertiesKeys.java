@@ -11,9 +11,10 @@ public class PropertiesKeys {
     public static final String ICON_LOGIN_PATH = "resources//images//frameIcon.png";
 
     //Config keys
-    public static final String WINDOW_DIMENSION_X = "wdx";
-    public static final String WINDOW_DIMENSION_Y = "wdy";
+    public static final String WINDOW_DIMENSION_X = "1000";
+    public static final String WINDOW_DIMENSION_Y = "800";
     public static final String LOGGED_USERNAME = "loggedUsername";
+    public static final String LOGGED_PASSWORD = "loggedPassword";
 
     //Frame keys
     public static final String TITLE = "wtitle";

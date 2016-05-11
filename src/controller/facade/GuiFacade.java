@@ -55,6 +55,9 @@ public class GuiFacade {
             case PropertiesKeys.ENGLISH_LANG:
                 MainFacade.changeLanguage(PropertiesKeys.ENGLISH_LANG);
                 break;
+            case PropertiesKeys.LOG_OUT_BUTTON:
+                MainFacade.logOut();
+                break;
 
         }
     }
