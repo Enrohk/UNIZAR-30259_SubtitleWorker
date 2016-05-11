@@ -14,12 +14,20 @@ import exceptions.DBException;
 import exceptions.SomethingWrongHappenException;
 import gui.factory.FactoryDialog;
 import model.ddbb.entity.Subtitle;
+import model.ddbb.entity.User;
 
 import java.util.*;
 
 import javax.swing.*;
 
 public class MainFacade {
+
+    private static UserDTO loggedUser = null;
+
+    public static UserDTO getLoggedUser() {
+        return loggedUser;
+    }
+
 
     public static void closeProgram(int closeOption) throws SomethingWrongHappenException {
         switch (closeOption) {
@@ -148,7 +156,8 @@ public class MainFacade {
     }
 
     public static void logged(UserDTO userDto, boolean keepLogged) {
-
+        MainFacade.loggedUser = userDto;
+        System.out.print("yes");
     }
 
 }

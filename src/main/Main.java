@@ -2,6 +2,7 @@ package main;
 
 import controller.ddbb.DBMapNameId;
 import controller.facade.GuiFacade;
+import controller.facade.MainFacade;
 import controller.functions.GuiFunctions;
 import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
@@ -33,8 +34,9 @@ public class Main {
     private static void start ()
     {
         try {
-            GuiFacade.start();
-        } catch (DBException e) {
+            //GuiFacade.start();
+            GuiFunctions.showGUI();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         //GuiFunctions.showGUI();

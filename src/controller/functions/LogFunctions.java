@@ -58,7 +58,7 @@ public class LogFunctions {
             pass2 = GuiItems.getRegisterPassJTF().getText();
             mail = GuiItems.getRegisterEmailJTF().getText();
 
-            if (validDataInput(pass, pass2, mail,name))
+            if (validDataInput(pass, pass2, mail,name, isRegisterInput))
             {
                 return new UserDTO(name, pass, mail);
             }
@@ -70,13 +70,23 @@ public class LogFunctions {
         }
     }
 
-    private static boolean validDataInput(String pass1, String pass2, String mail, String name) {
+    private static boolean validDataInput(String pass1, String pass2, String mail, String name, boolean isRegisterInput) {
         if (Functions.isValidMail(mail))
             if (pass1.equals(pass2))
-                if(UserDTO.isValidName(name))
-                    return true;
+                if (isRegisterInput)
+                {
+                    if(!UserDTO.isValidName(name))
+                        return true;
+                    else
+                        FactoryDialog.nameErrorRegister();
+                }
                 else
-                    FactoryDialog.nameErrorRegister();
+                {
+                    if(!UserDTO.isValidName(name))
+                        return true;
+                    else
+                        FactoryDialog.nameErrorRegister();
+                }
             else
                 FactoryDialog.passErrorRegister();
         else

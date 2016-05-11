@@ -4,10 +4,12 @@ package controller.facade;
 import controller.ddbb.dto.SubtitleDTO;
 import controller.functions.GuiFunctions;
 import controller.functions.LogFunctions;
+import controller.security.PropertiesHandler;
 import controller.security.PropertiesKeys;
 import exceptions.DBException;
 import gui.components.SubtitleCenterPanel;
 import gui.factory.FactoryDialog;
+import main.Main;
 import model.ddbb.entity.Subtitle;
 
 public class GuiFacade {
@@ -46,6 +48,13 @@ public class GuiFacade {
             case PropertiesKeys.BACK_TO_MAIN_BTN:
                 showCenterMain();
                 break;
+            case PropertiesKeys.SPANISH_LANG :
+                MainFacade.changeLanguage(PropertiesKeys.SPANISH_LANG);
+                break;
+
+            case PropertiesKeys.ENGLISH_LANG:
+                MainFacade.changeLanguage(PropertiesKeys.ENGLISH_LANG);
+                break;
 
         }
     }
@@ -58,6 +67,10 @@ public class GuiFacade {
             LogFunctions.registerPanel();
         else
             System.exit(0);
+
+        if (MainFacade.getLoggedUser() == null)
+            start();
+
     }
 
     public static void showSubtitlePanel (SubtitleDTO subtitle)
