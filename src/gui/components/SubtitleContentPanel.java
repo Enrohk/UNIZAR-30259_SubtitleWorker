@@ -12,21 +12,20 @@ public class SubtitleContentPanel extends JPanel {
     {
         JPanel cP = new JPanel();
         content = new JTextArea();
-        content.setColumns(30);
+        content.setColumns(40);
         content.setRows(25);
         content.setBorder(BorderFactory.createLineBorder(Color.black));
         content.setEditable(false);
         content.setWrapStyleWord(true);
         content.setLineWrap(true);
         cP.add(content);
-        this.add(cP);
+        JScrollPane jp = new JScrollPane(content);
+        this.add(jp);
 
     }
 
     public void addContent (String contentText)
     {
-        String c = contentText;
-        c.replaceAll("\n","\\n");
         content.setText(contentText);
     }
 

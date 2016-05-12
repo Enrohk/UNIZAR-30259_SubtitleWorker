@@ -47,6 +47,7 @@ public class PropertiesKeys {
     public static final String REG_PASSWORD2 = "regPass2";
     public static final String REG_MAIL = "regMail";
     public static final String UPDATE_TITLE = "updateUserTitle";
+    public static final String ADD_COMMENT = "addCommentLbl";
 
 
     //Buttons

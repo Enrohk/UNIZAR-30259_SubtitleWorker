@@ -43,25 +43,28 @@ public class SubtitleCommentInfoPanel extends JPanel {
         JPanel btnP = new JPanel();
         btnP.add(btn);
         topP.add(btnP);
-        this.add(topP, BorderLayout.NORTH);
+        //this.add(topP, BorderLayout.NORTH);
+        JPanel p = new JPanel();
+        p.add(new LangLabel(PropertiesKeys.ADD_COMMENT));
+        this.add(p,BorderLayout.NORTH);
 
     }
 
     private void addCommentBox ()
     {
         JPanel p = new JPanel();
-        p.setLayout(new BorderLayout());
+       // p.setLayout(new BorderLayout());
         JPanel cP = new JPanel();
         commentBox = new JTextArea();
         commentBox.setRows(10);
         commentBox.setColumns(30);
         commentBox.setBorder(BorderFactory.createLineBorder(Color.black));
         cP.add(commentBox);
-        p.add(cP,BorderLayout.CENTER);
+        p.add(cP);
         JPanel pR = new JPanel();
         pR.add(getRatingPanel());
         pR.setAlignmentX(TOP_ALIGNMENT);
-        p.add(pR,BorderLayout.SOUTH);
+        p.add(pR);
         this.add(p,BorderLayout.CENTER);
     }
 

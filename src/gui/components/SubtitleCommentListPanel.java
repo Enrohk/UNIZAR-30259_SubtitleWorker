@@ -19,11 +19,12 @@ public class SubtitleCommentListPanel extends JPanel {
 
         JPanel commentsPanel = new JPanel();
         commentsPanel.setLayout(new BoxLayout(commentsPanel,BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(commentsPanel);
         commentaries.forEach(comment -> commentsPanel.add(new SingleCommentPanel(comment)));
+        JScrollPane scrollPane = new JScrollPane(commentsPanel);
         this.add(scrollPane);
         this.validate();
         this.repaint();
+
 
     }
 

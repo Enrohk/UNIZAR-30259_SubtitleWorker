@@ -2,10 +2,12 @@ package gui.components;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 import controller.ddbb.dto.WorkDTO;
+import controller.functions.Functions;
 import controller.functions.Literals;
 import exceptions.DBException;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 public class AutoCompleteJTA {
 
@@ -19,7 +21,12 @@ public class AutoCompleteJTA {
                 break;
 
             case Literals.LANGUAGE_TYPE :
-                //items = LanguageDTO.getLanguageList();
+                String[] lang = Functions.getLanguageArray();
+                items = new ArrayList<>();
+                for(int i=0; i<lang.length; i++)
+                {
+                    items.add(lang[i]);
+                }
                 break;
         }
 

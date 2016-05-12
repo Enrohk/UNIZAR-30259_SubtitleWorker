@@ -10,6 +10,7 @@ import exceptions.FunctionException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
 
 public class LangButton extends JButton implements CanChangeLanguage {
 
@@ -25,6 +26,8 @@ public class LangButton extends JButton implements CanChangeLanguage {
             } catch (DBException e1) {
                 e1.printStackTrace();
             } catch (FunctionException e1) {
+                e1.printStackTrace();
+            } catch (UnsupportedEncodingException e1) {
                 e1.printStackTrace();
             }
         });

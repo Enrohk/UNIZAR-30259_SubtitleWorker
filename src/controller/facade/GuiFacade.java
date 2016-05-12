@@ -15,10 +15,12 @@ import gui.factory.FactoryDialog;
 import main.Main;
 import model.ddbb.entity.Subtitle;
 
+import java.io.UnsupportedEncodingException;
+
 public class GuiFacade {
 
 
-    public static void click(String propertyKey) throws DBException, FunctionException {
+    public static void click(String propertyKey) throws DBException, FunctionException, UnsupportedEncodingException {
 
         switch (propertyKey) {
             case PropertiesKeys.FILM_SEARCH_BUTTON:
@@ -100,7 +102,7 @@ public class GuiFacade {
 
     }
 
-    public static void showSubtitlePanel (SubtitleDTO subtitle) throws DBException {
+    public static void showSubtitlePanel (SubtitleDTO subtitle) throws DBException, UnsupportedEncodingException {
         GuiItems.getCenterPanel().removeAll();
         GuiItems.getCenterPanel().add(GuiItems.getCenterSubtitlePanel());
         ((SubtitleCenterPanel)GuiItems.getCenterSubtitlePanel()).fillInfo(subtitle);

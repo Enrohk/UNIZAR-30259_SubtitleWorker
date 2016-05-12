@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) {
         try {
+            System.setProperty("line.separator","\r\n");
             UIManager.setLookAndFeel(
                     UIManager.getSystemLookAndFeelClassName());
             PropertiesHandler.loadConfigProperties();

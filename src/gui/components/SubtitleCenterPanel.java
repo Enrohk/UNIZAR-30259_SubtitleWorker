@@ -5,6 +5,7 @@ import exceptions.DBException;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.UnsupportedEncodingException;
 
 public class SubtitleCenterPanel extends JPanel {
 
@@ -41,14 +42,14 @@ public class SubtitleCenterPanel extends JPanel {
 
     }
 
-    public void fillInfo (SubtitleDTO subtitle) throws DBException {
+    public void fillInfo (SubtitleDTO subtitle) throws DBException, UnsupportedEncodingException {
         clear();
         this.subtitleDto = subtitle;
         titleLabel.setText(subtitle.getTitle());
             if(subtitle.getCommentaries()!= null && subtitle.getCommentaries().size() > 0)
         commentListPanel.addComments(subtitle.getCommentaries());
             if(subtitle.getContent()!=null)
-        contentPanel.addContent(new String(subtitle.getContent()));
+        contentPanel.addContent(new String(subtitle.getContent(),"UTF-8"));
         this.validate();
         this.repaint();
     }
@@ -74,7 +75,7 @@ public class SubtitleCenterPanel extends JPanel {
         return addCommentPanel.getText();
     }
 
-    public void updateComments () throws DBException {
+    public void updateComments () throws DBException, UnsupportedEncodingException {
         fillInfo(this.subtitleDto);
     }
 }

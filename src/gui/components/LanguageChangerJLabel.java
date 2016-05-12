@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.UnsupportedEncodingException;
 
 public class LanguageChangerJLabel extends JLabel {
 
@@ -33,6 +34,8 @@ public class LanguageChangerJLabel extends JLabel {
                 } catch (DBException e1) {
                     e1.printStackTrace();
                 } catch (FunctionException e1) {
+                    e1.printStackTrace();
+                } catch (UnsupportedEncodingException e1) {
                     e1.printStackTrace();
                 }
             }

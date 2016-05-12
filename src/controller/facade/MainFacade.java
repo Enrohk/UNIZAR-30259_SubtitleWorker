@@ -106,7 +106,7 @@ public class MainFacade {
             int option = FactoryDialog.uploadSubtitleDialog();
             if (option == JOptionPane.YES_OPTION) {
                 SubtitleDTO subtitleDTO = new SubtitleDTO();
-                byte[] content = FileContent.getFileContent(GuiItems.getUploadPath()).getBytes();
+                byte[] content = FileContent.getFileContent(GuiItems.getUploadPath()).getBytes("UTF-8");
                 subtitleDTO.setContent(content);
                 subtitleDTO.setTitle(GuiItems.getUploadNameJTF().getText());
                 String query = QueryStrings.GET_LANGUAGE_BY_NAME + "'" +

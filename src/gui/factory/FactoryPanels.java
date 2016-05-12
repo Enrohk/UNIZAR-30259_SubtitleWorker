@@ -203,7 +203,7 @@ public class FactoryPanels {
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new GridLayout(0, 3));
         rightPanel.add(getLogOutPanel());
-        rightPanel.add(getEditPanel());
+      //  rightPanel.add(getEditPanel());
         rightPanel.add(getChangeLanguagePanel());
         return rightPanel;
 
@@ -295,7 +295,7 @@ public class FactoryPanels {
 
         JPanel langPanel = getPanelWithLayout();
         langPanel.add(new LangLabel(PropertiesKeys.UPLOAD_LANG_NAME));
-        jtf = new JTextField();
+        jtf = AutoCompleteJTA.getAutocompleteTextArea(Literals.LANGUAGE_TYPE);
         jtf.setColumns(15);
         GuiItems.setUploadLangJTF(jtf);
         langPanel.add(jtf);

@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.UnsupportedEncodingException;
 
 public class ClickableJLabel extends JPanel {
 
@@ -37,6 +38,8 @@ public class ClickableJLabel extends JPanel {
                 try {
                     GuiFacade.showSubtitlePanel(subtitleDTO);
                 } catch (DBException e1) {
+                    e1.printStackTrace();
+                } catch (UnsupportedEncodingException e1) {
                     e1.printStackTrace();
                 }
                 text.setForeground(c);

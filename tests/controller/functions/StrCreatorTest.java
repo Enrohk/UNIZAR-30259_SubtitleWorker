@@ -25,6 +25,12 @@ public class StrCreatorTest {
         //copy used because items of str2 are removed.
         assertTrue(strMap1.size() == strMap2.size());
         assertTrue(strMap2.size() == strMerge.size());
+        assertTrue(strMap1.size() == 2);
+        strMerge.forEach((k,v) ->
+        {
+                assertTrue(v.containsAll(strMap1.get(k)));
+                assertTrue(v.containsAll(strMap2.get(k)));
+        } );
     }
 }
 
