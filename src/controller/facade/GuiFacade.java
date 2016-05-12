@@ -1,6 +1,8 @@
 package controller.facade;
 
 
+import controller.ddbb.DataBaseManager;
+import controller.ddbb.dto.CommentDTO;
 import controller.ddbb.dto.SubtitleDTO;
 import controller.functions.GuiFunctions;
 import controller.functions.LogFunctions;
@@ -67,6 +69,12 @@ public class GuiFacade {
                 GuiFunctions.setLeftSubtitles();
                 break;
 
+            case PropertiesKeys.RATE_BTN :
+                CommentDTO comment = GuiFunctions.getComment();
+                DataBaseManager.saveOrDeleteSingleObject(comment.getUserCommentSubtitle(),true);
+                ((SubtitleCenterPanel)GuiItems.getCenterSubtitlePanel()).updateComments();
+                break;
+
 
         }
     }
@@ -103,4 +111,5 @@ public class GuiFacade {
         GuiFunctions.swapMergeBackBtn();
         GuiFunctions.validateAndRepaint();
     }
+
 }

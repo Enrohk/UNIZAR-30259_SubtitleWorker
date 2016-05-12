@@ -2,6 +2,7 @@ package controller.ddbb.dto;
 
 import controller.ddbb.DataBaseManager;
 import controller.ddbb.QueryStrings;
+import controller.facade.MainFacade;
 import controller.security.PassCrypt;
 import exceptions.DBException;
 import model.ddbb.entity.User;
@@ -11,6 +12,7 @@ public class UserDTO {
     private String name;
     private String inputPass;
     private String mail;
+
 
     public UserDTO (String name, String inputPass, String mail)
     {
@@ -47,7 +49,10 @@ public class UserDTO {
 
         if(inputPass != null && inputPass.length() > 0)
             if(PassCrypt.checkPassword(inputPass,getCryptPassFromDB()))
-            return true;
+            {
+                MainFacade.setLoggedUser(this);
+                return true;
+            }
         return false;
     }
 
@@ -78,5 +83,9 @@ public class UserDTO {
         }
         throw new DBException("User not found");
 
+    }
+
+    public static int getIdByName(String name) throws DBException {
+        return getUserFromDBByName(name).getIdUser();
     }
 }

@@ -12,6 +12,7 @@ public class SubtitleCenterPanel extends JPanel {
     private SubtitleCommentInfoPanel addCommentPanel;
     private SubtitleContentPanel contentPanel;
     private JLabel titleLabel;
+    private SubtitleDTO subtitleDto;
 
     public SubtitleCenterPanel ()
     {
@@ -42,6 +43,7 @@ public class SubtitleCenterPanel extends JPanel {
 
     public void fillInfo (SubtitleDTO subtitle) throws DBException {
         clear();
+        this.subtitleDto = subtitle;
         titleLabel.setText(subtitle.getTitle());
             if(subtitle.getCommentaries()!= null && subtitle.getCommentaries().size() > 0)
         commentListPanel.addComments(subtitle.getCommentaries());
@@ -58,4 +60,21 @@ public class SubtitleCenterPanel extends JPanel {
         addCommentPanel.clear();
     }
 
+    public int getRate ()
+    {
+        return addCommentPanel.getRate();
+    }
+
+    public int getSubtitleId() {
+        return subtitleDto.getIdSubtitle();
+    }
+
+    public String getCommentValue ()
+    {
+        return addCommentPanel.getText();
+    }
+
+    public void updateComments () throws DBException {
+        fillInfo(this.subtitleDto);
+    }
 }

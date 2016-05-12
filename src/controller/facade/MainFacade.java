@@ -25,6 +25,10 @@ public class MainFacade {
 
     private static UserDTO loggedUser = null;
 
+
+    public static void setLoggedUser(UserDTO loggedUser) {
+        MainFacade.loggedUser = loggedUser;
+    }
     public static UserDTO getLoggedUser() {
         return loggedUser;
     }

@@ -85,4 +85,13 @@ public class SubtitleCommentInfoPanel extends JPanel {
         commentBox.setText("");
         spinnerModel.setValue(0);
     }
+
+    public int getRate() {
+        return startRater.getSelection();
+    }
+
+    public String getText()
+    {
+        return commentBox.getText();
+    }
 }

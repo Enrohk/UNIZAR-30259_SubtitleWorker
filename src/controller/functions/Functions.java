@@ -11,7 +11,6 @@ import model.ddbb.entity.UserComentSubtitle;
 import model.ddbb.entity.Work;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -168,7 +167,7 @@ public class Functions {
         CommentDTO commentDto = new CommentDTO();
         commentDto.setRate(Integer.parseInt(dbComment.getPunt()));
         commentDto.setText(dbComment.getText());
-        commentDto.setAuthor("NOT IMPLEMENTED");
+        commentDto.setAuthorId(dbComment.getUserIdUser());
         return commentDto;
     }
 }

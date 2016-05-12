@@ -2,13 +2,16 @@ package controller.functions;
 
 
 import controller.ddbb.QueryStrings;
+import controller.ddbb.dto.CommentDTO;
 import controller.ddbb.dto.SubtitleDTO;
+import controller.ddbb.dto.UserDTO;
 import controller.ddbb.dto.WorkDTO;
 import controller.facade.GuiItems;
 import controller.facade.MainFacade;
 import exceptions.DBException;
 import exceptions.FunctionException;
 import gui.MainWindow;
+import gui.components.SubtitleCenterPanel;
 import gui.components.SubtitleCheckBox;
 import gui.components.SubtitleListPanel;
 import model.ddbb.entity.Subtitle;
@@ -109,5 +112,19 @@ public class GuiFunctions {
         GuiItems.getMainBotPanel().removeAll();
         GuiItems.getMainBotPanel().add(GuiItems.getBotBtn(currentBotBtn));
         validateAndRepaint();
+    }
+
+    public static CommentDTO getComment() throws DBException {
+        CommentDTO commentDto = new CommentDTO();
+        String text = ((SubtitleCenterPanel) GuiItems.getCenterSubtitlePanel()).getCommentValue();
+        commentDto.setText(text);
+        int rate = ((SubtitleCenterPanel) GuiItems.getCenterSubtitlePanel()).getRate();
+        commentDto.setRate(rate);
+        int id = UserDTO.getIdByName(MainFacade.getLoggedUser().getName());
+        commentDto.setAuthorId(id);
+        id = ((SubtitleCenterPanel) GuiItems.getCenterSubtitlePanel()).getSubtitleId();
+        commentDto.setIdSubtitle(id);
+        return commentDto;
+
     }
 }
