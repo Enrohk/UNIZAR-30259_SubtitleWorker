@@ -1,11 +1,13 @@
 package controller.functions;
 
 
+import controller.ddbb.DataBaseManager;
 import controller.ddbb.QueryStrings;
 import controller.ddbb.dto.CommentDTO;
 import controller.ddbb.dto.SubtitleDTO;
 import controller.ddbb.dto.UserDTO;
 import controller.ddbb.dto.WorkDTO;
+import controller.facade.GuiFacade;
 import controller.facade.GuiItems;
 import controller.facade.MainFacade;
 import exceptions.DBException;
@@ -14,6 +16,7 @@ import gui.MainWindow;
 import gui.components.SubtitleCenterPanel;
 import gui.components.SubtitleCheckBox;
 import gui.components.SubtitleListPanel;
+import gui.factory.FactoryDialog;
 import model.ddbb.entity.Subtitle;
 
 import javax.swing.*;
@@ -125,6 +128,41 @@ public class GuiFunctions {
         id = ((SubtitleCenterPanel) GuiItems.getCenterSubtitlePanel()).getSubtitleId();
         commentDto.setIdSubtitle(id);
         return commentDto;
+
+    }
+
+    public static void showEditPanel() throws DBException {
+
+        boolean edited = false;
+        int editing;
+        while (!edited)
+        {
+            editing = FactoryDialog.editUserDialog();
+            if(editing == 0)
+            {
+                LogFunctions.updateUser();
+            }
+            else if (editing == 1)
+            {
+                edited=true;
+            }
+            else if (editing == 2)
+            {
+                try {
+                    DataBaseManager.saveOrDeleteSingleObject(MainFacade.getLoggedUser().generateUser(), false);
+                    MainFacade.closeProgram(JOptionPane.YES_OPTION);
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Delete error");
+                    edited = true;
+                }
+            }
+            else
+            {
+                edited = true;
+            }
+        }
 
     }
 }

@@ -75,6 +75,10 @@ public class GuiFacade {
                 ((SubtitleCenterPanel)GuiItems.getCenterSubtitlePanel()).updateComments();
                 break;
 
+            case PropertiesKeys.EDIT_USER_BTN :
+                GuiFunctions.showEditPanel();
+                break;
+
 
         }
     }

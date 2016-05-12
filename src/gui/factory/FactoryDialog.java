@@ -108,4 +108,20 @@ public class FactoryDialog {
 
     public static void nameErrorRegister() {
     }
+
+    public static int editUserDialog() throws DBException {
+
+        String editBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.EDIT_BTN),
+                cancelBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.CANCEL_BTN),
+                deleteBtn = PropertiesHandler.getLanguageValue(PropertiesKeys.DELETE_BTN);
+        String[] options = {editBtn, cancelBtn};
+
+        return JOptionPane.showOptionDialog(null,
+                FactoryPanels.getUpdateDialogPanel(),
+                PropertiesHandler.getLanguageValue(PropertiesKeys.UPDATE_TITLE),
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
+                new ImageIcon(PropertiesKeys.ICON_LOGIN_PATH),
+                options, options[0]);
+    }
 }

@@ -1,7 +1,10 @@
 package gui.factory;
 
 
+import controller.ddbb.dto.UserDTO;
+import controller.facade.GuiFacade;
 import controller.facade.GuiItems;
+import controller.facade.MainFacade;
 import controller.functions.Functions;
 import controller.functions.Literals;
 import controller.security.PropertiesHandler;
@@ -198,11 +201,18 @@ public class FactoryPanels {
     private static JPanel getGenericTopRight() {
 
         JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new GridLayout(0, 2));
+        rightPanel.setLayout(new GridLayout(0, 3));
         rightPanel.add(getLogOutPanel());
+        rightPanel.add(getEditPanel());
         rightPanel.add(getChangeLanguagePanel());
         return rightPanel;
 
+    }
+
+    private static JPanel getEditPanel() {
+        JPanel editP = new JPanel();
+        editP.add(new LangButton(PropertiesKeys.EDIT_USER_BTN));
+        return editP;
     }
 
     private static JPanel getLogOutPanel() {
@@ -263,7 +273,7 @@ public class FactoryPanels {
     }
 
 
-    public static JPanel getUploadSubtitlePanel() {
+    public static JPanel getUploadSubtitlePanel() throws DBException {
 
         JPanel uploadSubtitle = new JPanel();
 
@@ -278,13 +288,15 @@ public class FactoryPanels {
 
         JPanel workPanel = getPanelWithLayout();
         workPanel.add(new LangLabel(PropertiesKeys.UPLOAD_WORK));
-        jtf = new JTextField(15);
+        jtf = AutoCompleteJTA.getAutocompleteTextArea(Literals.WORK_TYPE);
+        jtf.setColumns(15);
         GuiItems.setUploadWorkJTF(jtf);
         workPanel.add(jtf);
 
         JPanel langPanel = getPanelWithLayout();
         langPanel.add(new LangLabel(PropertiesKeys.UPLOAD_LANG_NAME));
-        jtf = new JTextField(15);
+        jtf = new JTextField();
+        jtf.setColumns(15);
         GuiItems.setUploadLangJTF(jtf);
         langPanel.add(jtf);
 
@@ -319,5 +331,14 @@ public class FactoryPanels {
         centerPanel.add(getCenterTopPanel(), BorderLayout.NORTH);
         centerPanel.add(getCenterCenterPanel(), BorderLayout.CENTER);
         GuiItems.setCenterMainPanel(centerPanel);
+    }
+
+    public static JPanel getUpdateDialogPanel() throws DBException {
+        JPanel updatePanel = getRegisterDialogPanel();
+
+        GuiItems.getRegisterEmailJTF().setText(UserDTO.getMailByName(MainFacade.getLoggedUser().getName()));
+        GuiItems.getLogInNameJTF().setText(MainFacade.getLoggedUser().getName());
+
+        return updatePanel;
     }
 }

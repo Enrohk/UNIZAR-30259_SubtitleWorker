@@ -1,6 +1,7 @@
 package controller.functions;
 
 
+import controller.ddbb.DataBaseManager;
 import controller.ddbb.dto.UserDTO;
 import controller.facade.GuiFacade;
 import controller.facade.GuiItems;
@@ -94,6 +95,7 @@ public class LogFunctions {
     }
 
     private static void start(UserDTO userDto) {
+
         if (GuiItems.isKeepLogged())
         {
             MainFacade.logged(userDto, true);
@@ -102,5 +104,10 @@ public class LogFunctions {
             MainFacade.logged(userDto,false);
         }
         GuiFunctions.showGUI();
+    }
+
+    public static void updateUser() throws DBException {
+        UserDTO updateUser = getUserInput(true);
+        DataBaseManager.saveOrDeleteSingleObject(updateUser.generateUser(),true);
     }
 }

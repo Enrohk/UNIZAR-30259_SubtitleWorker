@@ -46,6 +46,7 @@ public class PropertiesKeys {
     public static final String REGISTER_TITLE = "regTitle";
     public static final String REG_PASSWORD2 = "regPass2";
     public static final String REG_MAIL = "regMail";
+    public static final String UPDATE_TITLE = "updateUserTitle";
 
 
     //Buttons
@@ -64,11 +65,14 @@ public class PropertiesKeys {
     public static final String BACK_TO_MAIN_BTN = "backBtn";
     public static final String MODIFY_TIME_BTN = "modifyTimeBtn";
     public static final String RATE_BTN = "rateBtn";
+    public static final String EDIT_USER_BTN = "editUserBtn";
+    public static final String EDIT_BTN = "edit";
+    public static final String DELETE_BTN = "delete";
 
     //Testing
     public static final String TEST_TEXT = "test";
 
     //Labels
     public static String CHANGE_TIME_SUB = "changeTimeSub";
-
 }
+

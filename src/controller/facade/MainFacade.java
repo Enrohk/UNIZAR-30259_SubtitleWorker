@@ -14,8 +14,10 @@ import controller.security.PropertiesKeys;
 import exceptions.DBException;
 import exceptions.SomethingWrongHappenException;
 import gui.factory.FactoryDialog;
+import model.ddbb.entity.Language;
 import model.ddbb.entity.Subtitle;
 import model.ddbb.entity.User;
+import model.ddbb.entity.Work;
 
 import java.util.*;
 
@@ -110,7 +112,7 @@ public class MainFacade {
                 String query = QueryStrings.GET_LANGUAGE_BY_NAME + "'" +
                         GuiItems.getUploadLangJTF().getText() + "'";
                 List list = DataBaseManager.getListByQuery(query);
-                int id = Functions.getObjectIDByType(Literals.LANGUAGE_TYPE, list.get(0));
+                int id = ((Language)list.get(0)).getIdLanguage();
                 subtitleDTO.setLanguageIdLanguage(id);
 
                 query = QueryStrings.GET_WORK_BY_NAME + "'" +
@@ -118,7 +120,7 @@ public class MainFacade {
 
                 list = DataBaseManager.getListByQuery(query);
 
-                id = Functions.getObjectIDByType(Literals.WORK_TYPE, list.get(0));
+                id = ((Work) list.get(0)).getIdWork();
 
                 subtitleDTO.setWorkIdWork(id);
 

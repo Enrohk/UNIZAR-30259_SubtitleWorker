@@ -51,4 +51,8 @@ public class CommentDTO {
         ucs.setUserIdUser(authorId);
         return ucs;
     }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }

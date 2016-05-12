@@ -24,10 +24,6 @@ public class SubtitleDTO {
     private int workIdWork;
     private int languageIdLanguage;
 
-    public void setIdSubtitle(int idSubtitle) {
-        this.idSubtitle = idSubtitle;
-    }
-
     public int getIdSubtitle() {
         return idSubtitle;
     }
@@ -96,7 +92,7 @@ public class SubtitleDTO {
 
     public List<CommentDTO> getCommentaries() throws DBException {
 
-        String query = QueryStrings.getComentsBySubtitleId+"'"+this.idSubtitle+"'";
+        String query = QueryStrings.getComentsBySubtitleId+this.idSubtitle;
         List<UserComentSubtitle> dbList = (List<UserComentSubtitle>) DataBaseManager.getListByQuery(query);
         List<CommentDTO> commentList = new ArrayList<>();
         if(dbList != null && dbList.size()>0)
@@ -125,4 +121,7 @@ public class SubtitleDTO {
         return subtitleList;
     }
 
+    public void setIdSubtitle(int idSubtitle) {
+        this.idSubtitle = idSubtitle;
+    }
 }

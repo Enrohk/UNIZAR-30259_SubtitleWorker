@@ -25,6 +25,8 @@ public class SubtitleContentPanel extends JPanel {
 
     public void addContent (String contentText)
     {
+        String c = contentText;
+        c.replaceAll("\n","\\n");
         content.setText(contentText);
     }
 

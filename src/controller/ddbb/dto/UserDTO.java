@@ -45,6 +45,14 @@ public class UserDTO {
         return true;
     }
 
+    public User generateUser () throws DBException {
+        User user = new User();
+        user.setEmail(mail);
+        user.setUsername(name);
+        user.setIdUser(getIdByName(name));
+        return user;
+    }
+
     public boolean validateUser () throws DBException {
 
         if(inputPass != null && inputPass.length() > 0)
@@ -87,5 +95,9 @@ public class UserDTO {
 
     public static int getIdByName(String name) throws DBException {
         return getUserFromDBByName(name).getIdUser();
+    }
+
+    public static String getMailByName(String name) throws DBException {
+        return getUserFromDBByName(name).getEmail();
     }
 }

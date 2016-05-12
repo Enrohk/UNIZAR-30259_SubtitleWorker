@@ -3,6 +3,7 @@ package controller.functions;
 import controller.ddbb.DBMapNameId;
 import controller.ddbb.dto.CommentDTO;
 import controller.ddbb.dto.SubtitleDTO;
+import controller.facade.MainFacade;
 import controller.security.PropertiesKeys;
 import exceptions.FunctionException;
 import model.ddbb.entity.Language;
@@ -168,6 +169,7 @@ public class Functions {
         commentDto.setRate(Integer.parseInt(dbComment.getPunt()));
         commentDto.setText(dbComment.getText());
         commentDto.setAuthorId(dbComment.getUserIdUser());
+        commentDto.setAuthor(MainFacade.getLoggedUser().getName());
         return commentDto;
     }
 }
